@@ -1,0 +1,55 @@
+.site-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-bottom: 2px solid #ddd;
+}
+
+.header-logo {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.header-logo img {
+    display: block;
+    width: 150px;
+    height: auto;
+}
+
+.header-logo h1 {
+    margin: 0;
+    font-size: 2em;
+    color: #333;
+}
+
+.produits {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+.produit {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.produit h2 {
+    margin: 0 0 10px;
+    font-size: 1.5em;
+    color: #333;
+}
+
+.produit p {
+    margin: 5px 0;
+    color: #666;
+    font-size: 1em;
+}
