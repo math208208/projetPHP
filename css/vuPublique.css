@@ -1,55 +1,114 @@
-.site-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px;
-    background-color: #f4f4f4;
-    border-bottom: 2px solid #ddd;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif; /* pour TOUS les éléments */
 }
 
-.header-logo {
-    display: flex;
-    align-items: center;
-    gap: 20px;
+body {
+  background-color: #f7f3f0;
+  overflow-x: hidden; /* desactiver le defilement à l'horizontal */
+  position: relative;
 }
 
-.header-logo img {
-    display: block;
-    width: 150px;
-    height: auto;
+body::before {
+  content: "";
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+  background-color: #fff9ef;
+  z-index: 0; /* placé en arrière plan */
 }
 
-.header-logo h1 {
-    margin: 0;
-    font-size: 2em;
-    color: #333;
+.titreCentral {
+  position: relative;
+
+  width: 100%;
+  height: 100vh; /* prend toute la largeur et la hauteur*/
+  background-image: url("../assets/background2.jpg");
+  background-size: cover; /* couvre tout le fond avec l'image*/
+
+  background-position: center;
+  background-attachment: fixed; /* image du fond ne bouge pas et reste fixe quand on scroll la page*/
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
 }
 
-.produits {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    padding: 20px;
-    background-color: #f9f9f9;
+.contenuTC h1,
+.contenuTC h2 {
+  margin: 0;
+  padding: 10px;
 }
 
-.produit {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 15px;
-    text-align: center;
-    background-color: #fff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+.title {
+  font-size: 60px;
+  font-weight: bold;
+  line-height: 1.2;
 }
 
-.produit h2 {
-    margin: 0 0 10px;
-    font-size: 1.5em;
-    color: #333;
+.subtitle {
+  font-size: 26px;
+  margin-top: 20px;
+  opacity: 0;
+  color: #fff9ef;
+  font-weight: bold;
+  animation: effetsousTitre 2s ease forwards 1s; /* voir animation en dessous => */
 }
 
-.produit p {
-    margin: 5px 0;
-    color: #666;
-    font-size: 1em;
+/* animation : le sous titre apparait de bas vers le haut */
+@keyframes effetsousTitre {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  100% {
+    opacity: 1; /* apparait apres l'animation */
+    transform: translateY(0); /* reviens a la position de base*/
+  }
+}
+
+.scroll_detect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: rgba(0, 0, 0, 0);
+}
+
+.content {
+  padding: 60px 20px;
+  background-color: #f0f0f0;
+}
+
+.section {
+  padding: 60px;
+  text-align: center;
+  font-size: 24px;
+}
+
+h2 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 1rem;
+  color: #555;
+}
+
+h1 {
+  font-family: "Abril Fatface", serif;
+  font-size: 25px;
+  color: #fff9ef;
 }
