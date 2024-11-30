@@ -2,87 +2,71 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Montserrat", sans-serif; /* pour TOUS les éléments */
+  font-family: "Montserrat", sans-serif; /* Pour TOUS les éléments */
 }
 
 body {
   background-color: #f7f3f0;
-  overflow-x: hidden; /* desactiver le defilement à l'horizontal */
+  overflow-x: hidden;
   position: relative;
+  padding-top: 70px;
 }
 
 body::before {
   content: "";
-
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
-
   width: 100%;
   height: 100%;
   background-color: #fff9ef;
-  z-index: 0; /* placé en arrière plan */
-}
-
-.titreCentral {
-  position: relative;
-
-  width: 100%;
-  height: 100vh; /* prend toute la largeur et la hauteur*/
-  background-image: url("../assets/background2.jpg");
-  background-size: cover; /* couvre tout le fond avec l'image*/
-
-  background-position: center;
-  background-attachment: fixed; /* image du fond ne bouge pas et reste fixe quand on scroll la page*/
-  display: flex;
-
-  justify-content: center;
-  align-items: center;
-  color: white;
-  text-align: center;
-}
-
-.contenuTC h1,
-.contenuTC h2 {
-  margin: 0;
-  padding: 10px;
+  z-index: -1; /* on s'assure que il ne passe pas au dessus des autres éléments */
 }
 
 .title {
-  font-size: 60px;
+  font-size: 57px;
   font-weight: bold;
   line-height: 1.2;
 }
 
 .subtitle {
-  font-size: 26px;
+  font-size: 24px;
   margin-top: 20px;
   opacity: 0;
   color: #fff9ef;
   font-weight: bold;
-  animation: effetsousTitre 2s ease forwards 1s; /* voir animation en dessous => */
+  animation: effetsousTitre 2s ease forwards 1s;
 }
 
-/* animation : le sous titre apparait de bas vers le haut */
+.titreCentral {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+
+  background-image: url("../assets/background2.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: scroll; /* quand on scroll, l'image ne reste pas fixe et bouge également*/
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: white;
+  text-align: center;
+  z-index: 1; /* passe au dessus de l'image */
+}
+
+/* Animation pour faire apparaître le sous-titre de bas vers le haut */
 @keyframes effetsousTitre {
   0% {
     opacity: 0;
     transform: translateY(20px);
   }
-
   100% {
-    opacity: 1; /* apparait apres l'animation */
-    transform: translateY(0); /* reviens a la position de base*/
+    opacity: 1;
+    transform: translateY(0);
   }
-}
-
-.scroll_detect {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background: rgba(0, 0, 0, 0);
 }
 
 .content {
@@ -90,25 +74,118 @@ body::before {
   background-color: #f0f0f0;
 }
 
-.section {
-  padding: 60px;
+/*NOS COOKIES*/
+
+.cookies-wrapper {
+  display: grid;
+  grid-template-columns: repeat(
+    4,
+    1fr
+  ); /* que 4 cartes de cookies , sur une ligne sinon on va a la ligne */
+  justify-items: center;
+  margin-top: 40px;
+  margin-left: -2px;
+}
+
+/* la carte cookie avec photo + titre + description */
+
+.cookie-card {
+  background-color: #fff;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 250px;
   text-align: center;
-  font-size: 24px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
 }
 
-h2 {
-  font-size: 2rem;
-  color: #333;
-  margin-bottom: 10px;
+.cookie-card button:hover {
+  background-color: #8c5832;
+  color: #ffffff;
 }
 
-p {
-  font-size: 1rem;
+.cookie-card:hover {
+  transform: scale(1.05); /* augmente un peu la taille au survol*/
+}
+
+.cookie-img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.cookie-card h3 {
+  font-size: 1.2rem;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.cookie-card p {
+  font-size: 14px;
   color: #555;
 }
 
-h1 {
-  font-family: "Abril Fatface", serif;
-  font-size: 25px;
-  color: #fff9ef;
+.cookie-card h4 {
+  color: #504031;
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 11px;
 }
+
+#nos-cookies {
+  padding-top: 80px;
+  padding-bottom: 60px;
+}
+
+.cookies-container {
+  text-align: center;
+}
+
+.cookies-container h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  font-family: "Berkshire Swash", cursive;
+}
+
+.cookies-container p {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 40px;
+}
+
+.button {
+  font-size: 17px;
+  color: #fff9ef;
+  font-family: "Montserrat", sans-serif;
+  padding: 13px 7px;
+  font-weight: bold;
+}
+
+.cookie-card button {
+  border-radius: 18px;
+  background-color: #b08968;
+  margin-left: 7px;
+}
+
+/* mise en place du responsive a ameliorer*/
+@media (max-width: 768px) {
+  .titreCentral h1 {
+    font-size: 40px;
+  }
+
+  .titreCentral h2 {
+    font-size: 18px;
+  }
+
+  .cookies-wrapper {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .cookie-card {
+    width: 90%;
+  }
+}
+
+/*footer  à ajouter*/
