@@ -4,7 +4,7 @@ class ModelProduit{
     private $db;
     
     public function __construct() {
-        $this->db = new PDO('mysql:host=localhost;dbname=mm302494_ProjetPhp', 'mm302494', 'mm302494');
+        $this->db = new PDO('mysql:host=linserv-info-01.campus.unice.fr;dbname=mm302494_ProjetPhp', 'mm302494', 'mm302494');
     }
     
     public function getAllProduits() {
