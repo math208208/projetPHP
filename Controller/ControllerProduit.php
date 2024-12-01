@@ -1,17 +1,18 @@
 <?php 
-require 'Model/ModelProduit.php';
+require_once 'Model/ModelProduit.php';
 
 class ControllerProduit {
     
     public function afficherProduits() {
-        //Création du model
+
         $model = new ModelProduit();
-        $produits = $model->getAllProduits();
-        include 'View/vuPublique.php';
+        $produits = $model->getAllProduits(); 
+        
+ 
+        include_once 'View/vuPublique.php'; 
     }
-    
-    
 }
+
 
 
 

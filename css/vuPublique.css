@@ -91,7 +91,7 @@ body::before {
 
 .cookie-card {
   background-color: #fff;
-  padding: 15px;
+  padding: 15px 30px;
   border: 1px solid #ccc;
   border-radius: 8px;
   width: 250px;
@@ -100,13 +100,15 @@ body::before {
   transition: transform 0.3s ease;
 }
 
-.cookie-card button:hover {
-  background-color: #8c5832;
-  color: #ffffff;
-}
+@media (max-width: 768px) {
+  .cookies-wrapper {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
 
-.cookie-card:hover {
-  transform: scale(1.05); /* augmente un peu la taille au survol*/
+  .cookie-card {
+    width: 90%;
+  }
 }
 
 .cookie-img {
@@ -133,27 +135,6 @@ body::before {
   margin-bottom: 11px;
 }
 
-#nos-cookies {
-  padding-top: 80px;
-  padding-bottom: 60px;
-}
-
-.cookies-container {
-  text-align: center;
-}
-
-.cookies-container h2 {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-  font-family: "Berkshire Swash", cursive;
-}
-
-.cookies-container p {
-  font-size: 1.2rem;
-  color: #555;
-  margin-bottom: 40px;
-}
-
 .button {
   font-size: 17px;
   color: #fff9ef;
@@ -166,6 +147,25 @@ body::before {
   border-radius: 18px;
   background-color: #b08968;
   margin-left: 7px;
+  padding: 15px 30px;
+  font-size: 15px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.cookie-card button:hover {
+  background-color: #8c5832;
+  color: #ffffff;
+}
+
+#nos-cookies {
+  padding-top: 80px;
+  padding-bottom: 60px;
+}
+
+.cookies-container {
+  text-align: center;
+  padding: 0 20px;
 }
 
 /* mise en place du responsive a ameliorer*/
@@ -186,6 +186,18 @@ body::before {
   .cookie-card {
     width: 90%;
   }
+}
+
+.cookies-container h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  font-family: "Berkshire Swash", cursive;
+}
+
+.cookies-container p {
+  font-size: 19px;
+  color: #555;
+  margin-bottom: 40px;
 }
 
 /*footer  à ajouter*/

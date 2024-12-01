@@ -42,21 +42,16 @@
             </div>
 
             <a href="" class="cart-wrapper">
-                <div class="cart-icon">
+            <div class="cart-icon">
                 <form method="get" action="index.php">
                     <input type="hidden" name="action" value="viewCart">
-            	    <button type="submit">
-                    <img src="assets/cart.png" alt="cart" style="width: 28px; height: 28px;">
-                    <div class="notification">0</div> <!-- pour l'instant 0 mais à voir comment faire pour incrémenter les numéros d'articles -->
+                    <button type="submit" style="background: none; border: none; padding: 0; cursor: pointer; display: flex; position: relative;">
+                        <img src="assets/cart.png" alt="cart" style="width: 28px; height: 28px; display: block;">
+                        <div class="notification" style="position: absolute; top: -8px; right: -8px; background-color: white; color: #744a31; font-size: 12px; min-width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 500;">0</div>
                     </button>
-
-                        
-                        
-        	    
                 </form>
-                    
-                </div>
-            </a>
+            </div>
+        </a>
         </div>
     </nav>
 </header>
