@@ -21,8 +21,6 @@
         </form>
     </main>
 
-    <footer>
-        <p>&copy; 2024 FootFusion. Tous droits réservés.</p>
-    </footer>
+
 </body>
 </html>
