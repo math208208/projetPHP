@@ -104,13 +104,22 @@ class ControllerPanier {
             $clientModel = new ModelPanier();
 
             if ($clientModel->enregistrerClient($nom, $prenom, $email)) {
-                // Message de confirmation
-                echo "Merci, votre commande a bien été enregistrée. Vous allez recevoir un email de confirmation.";
+                 // Afficher le message de confirmation avec un délai
+                echo "<div style='text-align: center; margin-top: 50px;'>
+                <p style='font-size: 20px;'>Merci, votre commande a bien été enregistrée. Vous allez recevoir un email de confirmation.</p>
+                </div>";
+                 echo "<script>
+                setTimeout(function() {
+                    window.location.href = 'index.php?action=afficherProduits';
+                }, 4000); // Redirige après 5 secondes
+                </script>";
 
                 // Vider le panier après la commande
                 unset($_SESSION['panier']);
             } else {
-                echo "Une erreur est survenue lors de l'enregistrement de votre commande.";
+                echo "<div style='text-align: center; margin-top: 50px;'>
+                <p style='font-size: 20px; color: red;'>Une erreur est survenue lors de l'enregistrement de votre commande.</p>
+                </div>";
             }
         } else {
             // Si le panier est vide ou les informations manquent, rediriger

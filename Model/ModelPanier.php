@@ -21,5 +21,4 @@ class ModelPanier {
         return $stmt->execute();
     }
 
-    
 }

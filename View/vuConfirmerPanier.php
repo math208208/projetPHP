@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+
 </head>
 <body>
    
@@ -11,8 +12,8 @@
             <label for="nom">Nom :</label>
             <input type="text" id="nom" name="nom" required>
 
-            <label for="adresse">Adresse :</label>
-            <input type="text" id="adresse" name="adresse" required>
+            <label for="adresse">Prenom :</label>
+            <input type="text" id="prenom" name="prenom" required>
 
             <label for="email">Email :</label>
             <input type="email" id="email" name="email" required>
@@ -21,8 +22,5 @@
         </form>
     </main>
 
-    <footer>
-        <p>&copy; 2024 FootFusion. Tous droits réservés.</p>
-    </footer>
 </body>
 </html>
