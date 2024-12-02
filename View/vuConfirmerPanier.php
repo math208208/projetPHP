@@ -1,7 +1,17 @@
+
+<?php require_once "View\common\header.php" ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <title>Confirmer commande</title>
     <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/vuPublique.css">
+
+    <link rel="stylesheet" href="css/confirmerPanier.css">
+
 
 </head>
 <body>
@@ -18,7 +28,7 @@
             <label for="email">Email :</label>
             <input type="email" id="email" name="email" required>
 
-            <button type="submit">Confirmer la commande</button>
+            <button class="submit" type="submit">Confirmer la commande</button>
         </form>
     </main>
 

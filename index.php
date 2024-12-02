@@ -2,8 +2,8 @@
     session_start(); // Démarrage de la session
     
     require_once "View\common\header.php"; 
-    require 'Controller/ControllerProduit.php';
-    require 'Controller/ControllerPanier.php';
+    require_once 'Controller/ControllerProduit.php';
+    require_once 'Controller/ControllerPanier.php';
 
 
     $action = $_GET['action'] ?? 'afficherProduits';

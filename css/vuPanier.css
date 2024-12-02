@@ -79,9 +79,11 @@ h1 {
 button {
   padding: 12px 20px;
   border: none;
+
   border-radius: 15px;
   font-weight: 600;
   cursor: pointer;
+
   transition: all 0.3s ease;
   width: 100%;
 }

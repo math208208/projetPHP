@@ -7,20 +7,158 @@
     <title>Accueil - M&A Cookies</title>
 
     
+<style>
+    * {
+  background: none;
+  color: inherit;
+}
 
+
+.cookie-card {
+  transition: all 0.3s ease;
+}
+
+.cookie-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(176, 137, 104, 0.2);
+  border-color: #b08968;
+
+
+}
+
+.cookie-card img {
+  transition: transform 0.3s ease;
+
+}
+
+.cookie-card:hover img {
+      transform: scale(1.05);
+}
+
+.cookie-card:hover h4 {
+  color: #b08968;
+  }
+
+.cookie-card button {
+ transition: background-color 0.3s ease;
+}
+
+.cookie-card button:hover {
+ background-color: #8c5832;
+}
+.title{
+text-align: left;
+
+}
+
+.subtitle{
+text-align:left;
+}
+
+#nos-cookies {
+  padding-top: 80px;
+  padding-bottom: 60px;
+}
+
+.cookies-container {
+  text-align: center;
+  padding: 0 20px;
+
+}
+
+/**********/
+
+.banNew {
+    position: relative;
+    width: 90%;
+    height: 500px;
+    margin: 50px auto;
+    background-color: #504031;
+    border-radius: 30px;
+}
+
+.contenuNew{
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between; /* permet un ecart egal sur la longueur pour tous les éléments*/
+    align-items: center;
+    height: 100%;
+    padding: 0 80px;
+}
+
+.banText {
+    color: #fff9ef;
+}
+
+.banImg img {
+    max-width: 400px;
+    border-radius: 20px;
+    transition: transform 0.5s ease;
+}
+
+.banImg img:hover{
+    transform: translateY(-10px); /* effet de montant descendant quand on survole*/
+}
+
+/*bulle "à venir" en haut de la box */
+.showNew {
+    display: inline-block;
+    background-color: #b08968;
+    padding: 10px 25px;
+    border-radius: 25px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    font-size: 17px;
+}
+
+.banText h1{
+    font-family: "Berkshire Swash", cursive;
+    font-size: 41px;
+    margin-bottom: 30px;
+}
+
+.banText p{
+    font-size: 24px;
+    margin-bottom: 40px;
+}
+
+.contenuNew p{
+    font-size:18px;
+    font-weight:bold;
+}
+
+</style>
 </head>
+
 <body> 
 
     <main>
-        <div class="titreCentral">
-            <div class="contenuTC">
+    <div class="banNew">
+    <div class="contenuNew">
 
-                <h1 class="title">Nouveauté de la saison</h1>
-                <h2 class="subtitle">Venez découvrir notre dernière création aux saveurs réconfortantes</h2>
+            <div class="banText">
+
+                <span class="showNew">À venir - Nouvelle Recette</span>
+
+                <h1>Cookie à la cannelle</h1>
+
+                <p>Une création exclusive : un cookie au cœur cannelle fait maison. <br>Une texture parfaite entre croustillant et moelleux.</p><br>
+
+                <form method="post" action="index.php?action=addToCart">
+
+                    <input type="hidden" name="product" value='<?= json_encode($nouveaute) ?>'>
+                    <p>À découvrir prochainement ...</p>
+                </form>
             </div>
 
-            <div class="scroll_detect"></div>
+
+            <div class="banImg">
+                <img src="<?= $nouveaute['image'] ?>" alt="Cookie cannelle">
+            </div>
+            
         </div>
+    </div>
 
 
         <div id="nos-cookies">
