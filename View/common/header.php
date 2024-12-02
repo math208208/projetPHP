@@ -57,7 +57,12 @@
                         <img src="assets/cart.png" alt="cart" style="width: 28px; height: 28px; display: block;">
                         <div class="notification" style="position: absolute; top: -8px; right: -8px;
                         background-color: white; color: #744a31; font-size: 12px; min-width: 18px; height: 18px;
-                        border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 500;">0</div>
+                        border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 500;">
+                        <?php
+                            // Vérifie si la clé existe dans la session et affiche 0 si elle n'existe pas
+                            echo isset($_SESSION['quantite']['panierQuantity']) ? $_SESSION['quantite']['panierQuantity'] : 0;
+                        ?>
+                    </div>
                     </button>
                 </form>
             </div>

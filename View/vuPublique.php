@@ -6,57 +6,7 @@
     <link rel="stylesheet" href="css/vuPublique.css">
     <title>Accueil - M&A Cookies</title>
 
-    <style>
-         * {
-        background: none;
-        color: inherit;
-    }
     
-    
-    .cookie-card {
-        transition: all 0.3s ease;
-    }
-
-    .cookie-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 15px 30px rgba(176, 137, 104, 0.2);
-        border-color: #b08968;
-
-
-    }
-
-    .cookie-card img {
-        transition: transform 0.3s ease;
-
-    }
-
-    .cookie-card:hover img {
-            transform: scale(1.05);
-    }
-
-    .cookie-card:hover h4 {
-        color: #b08968;
-        }
-
-  .cookie-card button {
-       transition: background-color 0.3s ease;
-   }
-
-   .cookie-card button:hover {
-       background-color: #8c5832;
-   }
-   .title{
-    text-align: left;
-
-   }
-
-   .subtitle{
-    text-align:left;
-   }
-
-   
-
-    </style>
 
 </head>
 <body> 
@@ -97,7 +47,7 @@
 
                                 <input type="hidden" name="product" value='<?= json_encode($produit) ?>'>
 
-                                <button type="submit" id="boutonPanier" class="panier"style="border-radius: 18px; background-color: #b08968;
+                                <button type="submit" id="boutonPanier" class="panier" style="border-radius: 18px; background-color: #b08968;
                                 font-size: 15px; width: 100%; padding: 15px 30px; cursor: pointer; margin-left: 2px;border: none; color: #fff9ef;
                                 font-weight: bold;">Ajouter au panier</button>
 

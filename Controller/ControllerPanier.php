@@ -10,42 +10,57 @@ class ControllerPanier {
         }
     }
 
+    //Ajouter un élément au pannier
     public function addToCart() {
+
+        //Incrémentation du nombre d'aticle dans le panier
+        if (!isset($_SESSION['quantite']['panierQuantity'])) {
+            $_SESSION['quantite']['panierQuantity'] = 1; 
+        } else {
+            $_SESSION['quantite']['panierQuantity']++; 
+        }
+        
+
         if (isset($_POST['product'])) {
             $product = json_decode($_POST['product'], true);
 
-            // Vérifie si le produit est déjà dans le panier
+            
             $found = false;
             foreach ($_SESSION['panier'] as &$item) {
                 if ($item['id'] === $product['id']) {
-                    $item['quantity']++; // Incrémente la quantité si le produit existe déjà
+                    $item['quantity']++; //Incrémentation de la quantité de l'article
                     $found = true;
                     break;
                 }
+
+                
             }
+            //Si l'article n'existe pas deja dans le panier le creer
             if (!$found) {
                 $_SESSION['panier'][] = [
                     'id' => $product['id'],
                     'titre' => $product['titre'],
                     'description' => $product['description'],
                     'prix_public' => $product['prix_public'],
-                    'quantity' => 1 // Ajoute la quantité initiale
+                    'quantity' => 1 ,
                 ];
-        }}
+                
+            }}
+
         header('Location: index.php?action=afficherProduits');
         exit;
         
     }
     
-
+    //Suppression d'un article du panier
     public function removeFromCart() {
-
+        
         if (isset($_POST['product_id']) && isset($_SESSION['panier'])) {
             $productId = $_POST['product_id'];
-
             // Parcours le panier et supprime l'article correspondant
             foreach ($_SESSION['panier'] as $index => $item) {
                 if ($item['id'] == $productId) {
+                    $_SESSION['quantite']['panierQuantity']-=$item['quantity'];
                     unset($_SESSION['panier'][$index]);
                     break;
                 }
@@ -58,12 +73,23 @@ class ControllerPanier {
         header('Location: index.php?action=viewCart');
         exit;
     }
+
+    //Mise a jour de la quantité d'un article
     public function updateCart() {
-    
+         
+
         if (isset($_POST['product_id']) && isset($_POST['quantity']) && isset($_SESSION['panier'])) {
             $productId = $_POST['product_id'];
-            $quantity = intval($_POST['quantity']); // Transforme en entier
+            foreach ($_SESSION['panier'] as $index => $item) {
+                if ($item['id'] == $productId) {
+                    $_SESSION['quantite']['panierQuantity']-=$item['quantity'];
+                    break;
+                }
+            }
     
+            $quantity = intval($_POST['quantity']); // Transforme en entier
+
+
             // Parcours le panier et met à jour la quantité
             foreach ($_SESSION['panier'] as &$item) {
                 if ($item['id'] == $productId) {
@@ -71,39 +97,57 @@ class ControllerPanier {
                     break;
                 }
             }
+            $_SESSION['quantite']['panierQuantity']+=$quantity; // Incrémente de 1 si elle existe déjà
+
+
         }
-    
-        
-        // Recharge la vue du panier
         header('Location: index.php?action=viewCart');
         exit;
     }
 
-
+    //Confirmation du panier renvois sur la vu permettant d'entrer les données du client
     public function confirmerPanier() {
     
         // Vérifie si le panier existe
         if (isset($_SESSION['panier']) && !empty($_SESSION['panier'])) {
-            require 'View/vuConfirmerPanier.php'; // Charge la vue pour entrer les informations client
+            require 'View/vuConfirmerPanier.php'; 
         } else {
-            // Si le panier est vide, rediriger vers la page des produits
             header('Location: index.php?action=afficherProduits');
             exit;
         }
     }
 
-
+    //Confirmation de la commande aprés que le client est entré ses données
     public function finaliserCommande() {
 
-        // Vérifie si le panier existe et si les informations client ont été soumises
         if (isset($_POST['nom'], $_POST['prenom'], $_POST['email']) && isset($_SESSION['panier'])) {
             $nom = $_POST['nom'];
             $prenom = $_POST['prenom'];
             $email = $_POST['email'];
-    
-            $clientModel = new ModelPanier();
+            
+            $listeSimplifiee = [];
 
-            if ($clientModel->enregistrerClient($nom, $prenom, $email)) {
+            foreach ($_SESSION['panier'] as $article) {
+                if (isset($article['id'], $article['quantity'], $article['prix_public'])) {
+                    $listeSimplifiee[] = [
+                        'id' => $article['id'],
+                        'quantity' => $article['quantity'],
+                        'prix_public' => $article['prix_public']
+                    ];
+                }
+            }
+
+            $articlesJson=json_encode($listeSimplifiee);
+
+            
+            
+            
+            $clientModel = new ModelPanier();
+            
+            if ($clientModel->enregistrerClient($nom, $prenom, $email, $articlesJson)) {
+
+                $_SESSION['quantite']['panierQuantity']=0;
+
                  // Afficher le message de confirmation avec un délai
                 echo "<div style='text-align: center; margin-top: 50px;'>
                 <p style='font-size: 20px;'>Merci, votre commande a bien été enregistrée. Vous allez recevoir un email de confirmation.</p>
@@ -116,20 +160,31 @@ class ControllerPanier {
 
                 // Vider le panier après la commande
                 unset($_SESSION['panier']);
+
+            
             } else {
                 echo "<div style='text-align: center; margin-top: 50px;'>
                 <p style='font-size: 20px; color: red;'>Une erreur est survenue lors de l'enregistrement de votre commande.</p>
                 </div>";
             }
         } else {
-            // Si le panier est vide ou les informations manquent, rediriger
             header('Location: index.php?action=afficherProduits');
             exit;
         }
     }
+
+
     public function viewCart() {
         $cart = $_SESSION['panier']; // Récupérer le panier depuis la session
-        require 'View/vuPanier.php'; // Charger la vue du panier
+        $model = new ModelPanier();
+
+        // Vérifie si le panier existe
+        $panier = $_SESSION['panier'] ?? [];
+        $prixTotalHT = $model->calculerPrixTotalHT($panier);
+        $prixTotalTTC = $model->calculerPrixTotalTTC($prixTotalHT);
+
+
+        require 'View/vuPanier.php';
     }
 
 
