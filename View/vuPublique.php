@@ -5,6 +5,59 @@
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link rel="stylesheet" href="css/vuPublique.css">
     <title>Accueil - M&A Cookies</title>
+
+    <style>
+         * {
+        background: none;
+        color: inherit;
+    }
+    
+    
+    .cookie-card {
+        transition: all 0.3s ease;
+    }
+
+    .cookie-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(176, 137, 104, 0.2);
+        border-color: #b08968;
+
+
+    }
+
+    .cookie-card img {
+        transition: transform 0.3s ease;
+
+    }
+
+    .cookie-card:hover img {
+            transform: scale(1.05);
+    }
+
+    .cookie-card:hover h4 {
+        color: #b08968;
+        }
+
+  .cookie-card button {
+       transition: background-color 0.3s ease;
+   }
+
+   .cookie-card button:hover {
+       background-color: #8c5832;
+   }
+   .title{
+    text-align: left;
+
+   }
+
+   .subtitle{
+    text-align:left;
+   }
+
+   
+
+    </style>
+
 </head>
 <body> 
 
@@ -12,8 +65,8 @@
         <div class="titreCentral">
             <div class="contenuTC">
 
-                <h1 class="title">"Croustillants à l'extérieur,<br> fondants au coeur"</h1>
-                <h2 class="subtitle">Venez découvrir nos produits</h2>
+                <h1 class="title">Nouveauté de la saison</h1>
+                <h2 class="subtitle">Venez découvrir notre dernière création aux saveurs réconfortantes</h2>
             </div>
 
             <div class="scroll_detect"></div>

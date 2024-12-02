@@ -15,6 +15,14 @@
 
 <body>
 <header>
+
+<style>
+        html {
+            scroll-behavior: smooth; /* gere la transition de l'onglet "Nos cookies" de la nav à la page des cookies card */
+        }
+</style>
+
+
     <nav>
         <div class="nav-left">
             <a href="index.php" class="logo-link">
@@ -23,7 +31,7 @@
         </div>
 
         <div class="menu">
-            <a href="">Nos cookies</a>
+            <a href="#nos-cookies">Nos cookies</a>
             <a href="">Contact</a>
 
             
@@ -47,7 +55,9 @@
                     <input type="hidden" name="action" value="viewCart">
                     <button type="submit" style="background: none; border: none; padding: 0; cursor: pointer; display: flex; position: relative;">
                         <img src="assets/cart.png" alt="cart" style="width: 28px; height: 28px; display: block;">
-                        <div class="notification" style="position: absolute; top: -8px; right: -8px; background-color: white; color: #744a31; font-size: 12px; min-width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 500;">0</div>
+                        <div class="notification" style="position: absolute; top: -8px; right: -8px;
+                        background-color: white; color: #744a31; font-size: 12px; min-width: 18px; height: 18px;
+                        border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 500;">0</div>
                     </button>
                 </form>
             </div>

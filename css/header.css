@@ -53,16 +53,12 @@ nav {
   color: #744a31; /* quand on les survole */
 }
 
-/* panier avec notification quantité */
+/* panier*/
 .cart-wrapper {
   position: relative;
   display: inline-block;
   padding: 5px;
   margin-left: 2rem;
-}
-
-.cart-icon {
-  position: relative;
 }
 
 .notification {
@@ -79,6 +75,10 @@ nav {
   align-items: center;
   justify-content: center;
   font-weight: 500;
+}
+
+.cart-icon {
+  position: relative;
 }
 
 /* icône de recherche */
