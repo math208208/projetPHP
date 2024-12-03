@@ -117,6 +117,18 @@ class ControllerPanier {
         }
     }
 
+    public function sendEmail() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Récupérer les données du formulaire
+            $email = "M&ACookieCommande@gmail.com";
+            $message="Il y a une nouvelle commande de cookie !";
+
+
+            // Appel au modèle pour envoyer l'email
+            $emailModel = new ModelPanier();
+            $success = $emailModel->send($email, $message);
+        }
+    }
     //Confirmation de la commande aprés que le client est entré ses données
     public function finaliserCommande() {
 
@@ -145,7 +157,7 @@ class ControllerPanier {
             $clientModel = new ModelPanier();
             
             if ($clientModel->enregistrerClient($nom, $prenom, $email, $articlesJson)) {
-
+                $this->sendEmail();
                 $_SESSION['quantite']['panierQuantity']=0;
 
                  // Afficher le message de confirmation avec un délai
@@ -172,6 +184,17 @@ class ControllerPanier {
             exit;
         }
     }
+
+
+
+    
+
+
+
+
+
+
+
 
 
     public function viewCart() {

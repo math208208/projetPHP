@@ -81,4 +81,14 @@ class ModelPanier {
         return $total;
     }
 
-}
+    public function send($email, $message) {
+        $to = "matheo.moiron@etu.unice.fr"; 
+        $subject = "Nouvelle Commande";
+        $headers = "De: $email\r\n";
+        $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
+    
+        // Envoi de l'email
+        return mail($to, $subject, $message, $headers);
+    }
+
+} 
