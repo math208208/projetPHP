@@ -17,7 +17,7 @@ class ControllerAdminCLient {
     public function deleteClient(){
         $id=$_POST['id'];
         $clients = $this->model->deleteClient($id); 
-        header(header: 'Location: index.php?action=admin');
+        header(header: 'Location: index.php?action=adminClient');
         exit;
     }
 
@@ -26,7 +26,7 @@ class ControllerAdminCLient {
         $prenom=$_POST['prenom'];
         $email=$_POST['email'];
         $clients = $this->model->addClient($nom,$prenom,$email ); 
-        header(header: 'Location: index.php?action=admin');
+        header(header: 'Location: index.php?action=adminClient');
         exit;
     }
 

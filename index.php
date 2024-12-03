@@ -5,6 +5,7 @@
     require_once 'Controller/ControllerProduit.php';
     require_once 'Controller/ControllerPanier.php';
     require_once 'Controller/ControllerAdminClient.php';
+    require_once 'Controller/ControllerAdminProduit.php';
 
 
 
@@ -13,7 +14,8 @@
     //Création du controller
     $controller = new ControllerProduit();
     $panierController = new ControllerPanier();
-    $adminController=new ControllerAdminClient();
+    $adminControllerClient=new ControllerAdminClient();
+    $adminControllerProduit=new ControllerAdminProduit();
 
 
     switch ($action) {
@@ -39,17 +41,29 @@
         case 'finaliserCommande':
             $panierController->finaliserCommande();
             break;
-        case 'admin':
-            $adminController->viewAdminClient();
+        case 'adminClient':
+            $adminControllerClient->viewAdminClient();
             break;
         case 'deleteClient':
-            $adminController->deleteClient();
+            $adminControllerClient->deleteClient();
             break;
         case 'addClient':
-            $adminController->addClient();
+            $adminControllerClient->addClient();
             break;
         case 'findClient':
-            $adminController->findClient();
+            $adminControllerClient->findClient();
+            break;
+        case 'adminProduit':
+            $adminControllerProduit->viewAdminProduit();
+            break;
+        case 'deleteProduit':
+            $adminControllerProduit->deleteProduit();
+            break;
+        case 'addProduit':
+            $adminControllerProduit->addProduit();
+            break;
+        case 'findProduit':
+            $adminControllerProduit->findProduit();
             break;
         default:
             echo "Action non reconnue.";
