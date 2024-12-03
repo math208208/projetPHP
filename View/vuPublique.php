@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link rel="stylesheet" href="css/vuPublique.css">
+    <link rel="stylesheet" href="css/footer.css">
     <title>Accueil - M&A Cookies</title>
 
     
@@ -218,5 +219,8 @@ text-align:left;
             });
         </script>
     </main>
+
+    <?php require_once 'View/common/footer.php' ; ?>
+
 </body>
 </html>
