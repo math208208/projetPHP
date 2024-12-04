@@ -157,7 +157,7 @@ class ControllerPanier {
             $clientModel = new ModelPanier();
             
             if ($clientModel->enregistrerClient($nom, $prenom, $email, $articlesJson)) {
-                $this->sendEmail();
+                //$this->sendEmail();
                 $_SESSION['quantite']['panierQuantity']=0;
 
                  // Afficher le message de confirmation avec un délai
