@@ -185,11 +185,26 @@ text-align:left;
                             <form method="post" action="index.php?action=addToCart">
 
                                 <input type="hidden" name="product" value='<?= json_encode($produit) ?>'>
-
-                                <button type="submit" id="boutonPanier" class="panier" style="border-radius: 18px; background-color: #b08968;
-                                font-size: 15px; width: 100%; padding: 15px 30px; cursor: pointer; margin-left: 2px;border: none; color: #fff9ef;
-                                font-weight: bold;">Ajouter au panier</button>
-
+                                <?php
+                                $quantite = null; 
+                                foreach ($stock as $stockItem) {
+                                    if ($stockItem['produit_id'] == $produit['id']) {  
+                                        $quantite = $stockItem['quantité']; 
+                                        break;  
+                                    }
+                                }
+                                
+                                if ($quantite === 0 || $quantite === null) {
+                                    echo "<button id='boutonPanier' class='panier' style='border-radius: 18px; background-color: #606060;
+                                    font-size: 15px; width: 100%; padding: 15px 30px; cursor: not-allowed; margin-left: 2px;border: none; color: #fff9ef;
+                                    font-weight: bold;' disabled>Produit indisponible</button>";
+                                } else {
+                                    echo "<button type='submit' id='boutonPanier' class='panier' style='border-radius: 18px; background-color: #b08968;
+                                    font-size: 15px; width: 100%; padding: 15px 30px; cursor: pointer; margin-left: 2px;border: none; color: #fff9ef;
+                                    font-weight: bold;'>Ajouter au panier</button>";
+                                }
+                                ?>
+                                
                             </form>
                             </div>
                         <?php endforeach; ?>
