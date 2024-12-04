@@ -47,12 +47,12 @@ class ModelAdminProduit {
     public function addStock($seuil,$quantite){
         $id = $this->db->lastInsertId();
         $sql1="INSERT INTO gestion_stock (produit_id,seuil_critique,quantité) VALUES (:id,:seuil,:quantite)";
-            $stmt1 = $this->db->prepare($sql1);
+        $stmt1 = $this->db->prepare($sql1);
 
-            $stmt1->bindParam(':id', $id);
-            $stmt1->bindParam(':seuil', $seuil);
-            $stmt1->bindParam(':quantite', $quantite);
-            return $stmt1->execute();
+        $stmt1->bindParam(':id', $id);
+        $stmt1->bindParam(':seuil', $seuil);
+        $stmt1->bindParam(':quantite', $quantite);
+        return $stmt1->execute();
     }
 
     public function deleteProduit($id) {

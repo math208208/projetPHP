@@ -6,6 +6,9 @@
     require_once 'Controller/ControllerPanier.php';
     require_once 'Controller/ControllerAdminClient.php';
     require_once 'Controller/ControllerAdminProduit.php';
+    require_once 'Controller/ControllerAdminFacturation.php';
+    require_once 'Controller/ControllerAdminFournisseur.php';
+
 
 
 
@@ -16,13 +19,18 @@
     $panierController = new ControllerPanier();
     $adminControllerClient=new ControllerAdminClient();
     $adminControllerProduit=new ControllerAdminProduit();
+    $adminControllerFacturation=new ControllerAdminFacturation();
+    $adminControllerFournisseur=new ControllerAdminFournisseur();
+
 
 
     switch ($action) {
+        //Cas principal affichage des produits
         case 'afficherProduits':
-            //Cas principal lors du lancement de index
             $controller->afficherProduits();
             break;
+        
+        //Gestion du panier
         case 'addToCart':
             $panierController->addToCart();
             break;
@@ -35,12 +43,16 @@
         case 'removeFromCart':
             $panierController->removeFromCart();
             break;
-        case 'confirmerPanier': // Nouvelle action pour confirmer le panier
+
+        //Confirmation du panier
+        case 'confirmerPanier': 
             $panierController->confirmerPanier();
             break;
         case 'finaliserCommande':
             $panierController->finaliserCommande();
             break;
+        
+        //Gestion de la table Client
         case 'adminClient':
             $adminControllerClient->viewAdminClient();
             break;
@@ -53,6 +65,8 @@
         case 'findClient':
             $adminControllerClient->findClient();
             break;
+
+        //Gestion de la table produit + gestion_stock
         case 'adminProduit':
             $adminControllerProduit->viewAdminProduit();
             break;
@@ -65,6 +79,33 @@
         case 'findProduit':
             $adminControllerProduit->findProduit();
             break;
+
+        //Gestion de la table facturation
+        case 'adminFacturation':
+            $adminControllerFacturation->viewAdminCommande();
+            break;
+        case 'findCommande':
+            $adminControllerFacturation->findCommande();
+            break;
+        case 'deleteCommande':
+            $adminControllerFacturation->deleteCommande();
+            break;
+
+        //Gestion de la table fournisseur
+        case 'adminFournisseur':
+            $adminControllerFournisseur->viewAdminFournisseur();
+            break;
+        case 'findFournisseur':
+            $adminControllerFournisseur->findFournisseur();
+            break;
+        case 'addFournisseur':
+            $adminControllerFournisseur->addFournisseur();
+            break;
+        case 'deleteFournisseur':
+            $adminControllerFournisseur->deleteFournisseur();
+            break;
+        
+        
         default:
             echo "Action non reconnue.";
 }
