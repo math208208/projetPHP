@@ -81,6 +81,8 @@ class ModelPanier {
         return $total;
     }
 
+
+    
     public function send($email, $message) {
         $to = "matheo.moiron@etu.unice.fr"; 
         $subject = "Nouvelle Commande";

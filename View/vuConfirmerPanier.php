@@ -1,5 +1,5 @@
 
-<?php require_once "View\common\header.php" ?>
+<?php require_once "View/common/header.php" ?>
 
 <!DOCTYPE html>
 <html lang="fr">

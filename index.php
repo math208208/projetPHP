@@ -1,7 +1,7 @@
 <?php 
     session_start(); // Démarrage de la session
     
-    require_once "View\common\header.php"; 
+    require_once "View/common/header.php"; 
     require_once 'Controller/ControllerProduit.php';
     require_once 'Controller/ControllerPanier.php';
     require_once 'Controller/ControllerAdminClient.php';
