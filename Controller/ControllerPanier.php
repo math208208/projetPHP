@@ -117,16 +117,53 @@ class ControllerPanier {
         }
     }
 
-    public function sendEmail() {
+    public function sendEmailWebMaster() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // Récupérer les données du formulaire
-            $email = "M&ACookieCommande@gmail.com";
             $message="Il y a une nouvelle commande de cookie !";
+
+            $cartModel = new ModelPanier();
+
+            // Appel au modèle pour envoyer l'email
+            $success = $cartModel->sendEmailWebMaster($message);
+        }
+    }
+
+    public function sendEmailClient($email,$nom,$prenom,$articlesJson) {
+        $cartModel = new ModelPanier();
+
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $totalHT=$_SESSION['paiement']['prixHT'];
+            $totalTTC=$_SESSION['paiement']['prixTTC'];
+
+            $message="
+           
+                <html>
+                <head>
+                    <title>Confirmation de votre commande</title>
+                </head>
+                <body>
+                    <h2>Bonjour ".$nom." ".$prenom.",</h2>
+                    <p>Nous avons bien reçu votre commande et elle a été enregistrée avec succès.</p>
+                    <p><strong>Détails de la commande :</strong></p>
+                    <ul>
+                        <li><strong>Numéro de commande : </strong>y'en a pas pour l'instant sorry</li>
+                        <li><strong>Date de commande : </strong>A l'instant</li>
+                        <li><strong>Montant HT : </strong>".$totalHT."</li>
+                        <li><strong>Montant total (TTC) : </strong>". $totalTTC."</li>
+                    </ul>
+                    
+                    <p>Merci pour votre confiance !</p>
+                    <p>Bien cordialement,</p>
+                    <p><strong>L'équipe de M&ACookie</strong></p>
+                </body>
+                </html>
+            
+            ";
 
 
             // Appel au modèle pour envoyer l'email
-            $emailModel = new ModelPanier();
-            $success = $emailModel->send($email, $message);
+            $success = $cartModel->sendClient($message,$email);
         }
     }
     //Confirmation de la commande aprés que le client est entré ses données
@@ -157,7 +194,8 @@ class ControllerPanier {
             $clientModel = new ModelPanier();
             
             if ($clientModel->enregistrerClient($nom, $prenom, $email, $articlesJson)) {
-                //$this->sendEmail();
+                $this->sendEmailWebMaster();
+                $this->sendEmailClient($email,$nom,$prenom,$articlesJson);
                 $_SESSION['quantite']['panierQuantity']=0;
 
                  // Afficher le message de confirmation avec un délai

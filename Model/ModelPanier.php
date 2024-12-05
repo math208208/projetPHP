@@ -1,6 +1,15 @@
 <?php
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+require 'lib/Exception.php';
+require 'lib/PHPMailer.php';
+require 'lib/SMTP.php';
+
+
 class ModelPanier {
     private $db;
+    
 
     public function __construct() {
         $this->db = new PDO('mysql:host=linserv-info-01.campus.unice.fr;dbname=mm302494_ProjetPhp', 'mm302494', 'mm302494');
@@ -83,14 +92,66 @@ class ModelPanier {
 
 
     
-    public function send($email, $message) {
-        $to = "matheo.moiron@etu.unice.fr"; 
-        $subject = "Nouvelle Commande";
-        $headers = "De: $email\r\n";
-        $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
-    
-        // Envoi de l'email
-        return mail("matheo.moiron@etu.unice.fr", "test", "test");
+    public function sendEmailWebMaster( $message) {
+        $mail = new PHPMailer(true);
+        try {
+            // Configuration du serveur SMTP
+            $mail->isSMTP();
+            $mail->Host = 'smtp.gmail.com'; // Serveur SMTP Gmail
+            $mail->SMTPAuth = true;
+            $mail->Username = 'm.acookiecommande@gmail.com'; // Ton email
+            $mail->Password = 'vufi qxjc gkzg sneb';   // Ton mot de passe
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Type de sécurité TLS
+            $mail->Port = 587; // Port pour TLS
+            
+            // Configuration de l'email
+            $mail->setFrom('m.acookiecommande@gmail.com', 'M&A Cookie'); // Expéditeur
+            $mail->addAddress('matheo.moiron@etu.unice.fr', 'MOIRON Mathéo'); // Destinataire
+            $mail->addAddress('acile.el-dada@etu.unice.fr', 'EL-DADA Acile'); // Destinataire
+            
+            // Contenu de l'email
+            $mail->isHTML(true); // Email en HTML
+            $mail->Subject = 'Nouvelle Commande !';
+            $mail->Body    = $message;
+            $mail->AltBody = strip_tags($message); // Version texte brut
+            
+            // Envoi
+            $mail->send();
+        } catch (Exception $e) {
+            echo "<p>Erreur : L'email n'a pas pu être envoyé.</p> Erreur : {$mail->ErrorInfo}";
+        }
+        return 0;
+    }
+
+
+    public function sendClient( $message,$email) {
+        $mail = new PHPMailer(true);
+        try {
+            // Configuration du serveur SMTP
+            $mail->isSMTP();
+            $mail->Host = 'smtp.gmail.com'; // Serveur SMTP Gmail
+            $mail->SMTPAuth = true;
+            $mail->Username = 'm.acookiecommande@gmail.com'; // Ton email
+            $mail->Password = 'vufi qxjc gkzg sneb';   // Ton mot de passe
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Type de sécurité TLS
+            $mail->Port = 587; // Port pour TLS
+            
+            // Configuration de l'email
+            $mail->setFrom('m.acookiecommande@gmail.com', 'M&A Cookie'); // Expéditeur
+            $mail->addAddress($email, ''); // Destinataire
+            
+            // Contenu de l'email
+            $mail->isHTML(true); // Email en HTML
+            $mail->Subject = 'Confirmation commande !';
+            $mail->Body    = $message;
+            $mail->AltBody = strip_tags($message); // Version texte brut
+            
+            // Envoi
+            $mail->send();
+        } catch (Exception $e) {
+            echo "<p>Erreur : L'email n'a pas pu être envoyé.</p> Erreur : {$mail->ErrorInfo}";
+        }
+        return 0;
     }
 
 } 
