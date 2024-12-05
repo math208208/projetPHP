@@ -137,7 +137,7 @@ class ModelPanier {
             $mail->Port = 587; // Port pour TLS
             
             // Configuration de l'email
-            $mail->setFrom('m.acookiecommande@gmail.com', 'M&A Cookie'); // Expéditeur
+            $mail->setFrom('m.acookiecommande@gmail.com', 'M&A Cookies'); // Expéditeur
             $mail->addAddress($email, ''); // Destinataire
             
             // Contenu de l'email
