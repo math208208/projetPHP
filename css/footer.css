@@ -14,7 +14,18 @@ footer p {
 footer h4 {
   font-family: "Berkshire Swash", cursive;
   font-size: 29px;
-  margin-right: 75px;
+  margin-right: 125px;
+  margin-left: 125px;
+}
+
+footer h3 {
+  color: #fff9ef;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+footer h3:hover {
+  color: #744a31;
 }
 
 .admin {

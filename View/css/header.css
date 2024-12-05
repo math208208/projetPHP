@@ -1,0 +1,137 @@
+header {
+  background: #504031;
+  padding: 6px;
+  position: fixed; /* le header ne bougera pas de place */
+  width: 100%; /* prend toute la largeur de la fenêtre */
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 100; /* pour s'assurer que le header va s'afficher au dessus des autres éléments */
+  box-shadow: 0 2px 15px rgba(165, 114, 83, 0.1); /* effet ombré */
+}
+
+nav {
+  display: flex;
+  justify-content: space-between; /* espace entre les sections */
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0.5rem 2rem;
+}
+
+.nav-left {
+  display: flex;
+  justify-content: flex-start;
+  flex: 0 0 auto;
+}
+
+.nav-center {
+  flex: 1;
+  text-align: center;
+}
+
+.site-title {
+  font-family: "Berkshire Swash", cursive;
+  font-size: 29px;
+  margin: 0;
+  color: #fff9ef;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 0 0 auto;
+  gap: 2rem;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.logo-img {
+  height: 56px;
+  width: auto;
+}
+
+.nav-right a {
+  color: #fff9ef;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 17px;
+  transition: all 0.3s ease;
+  font-family: "Montserrat", sans-serif;
+}
+
+.nav-right a:hover {
+  color: #744a31; /* quand on les survole */
+}
+
+/* panier*/
+.cart-wrapper {
+  position: relative;
+  display: inline-block;
+  padding: 5px;
+  margin-left: 2rem;
+}
+
+.notification {
+  position: absolute;
+  top: -8px; /* pour avoir la bulle légèrement en décalé */
+  right: -8px;
+  background-color: white;
+  color: #744a31;
+  font-size: 12px;
+  min-width: 18px;
+  height: 18px;
+  border-radius: 50%; /* affichage en arrondi */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+}
+
+.cart-icon {
+  position: relative;
+}
+
+/* icône de recherche */
+
+.search-field {
+  display: none;
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+}
+
+.search-toggle {
+  display: none;
+}
+
+.search-toggle:checked + .search-field {
+  display: block;
+}
+
+.search-field input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 200px;
+}
+
+.search-icon {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}

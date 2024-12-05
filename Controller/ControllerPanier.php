@@ -43,11 +43,12 @@ class ControllerPanier {
                     'description' => $product['description'],
                     'prix_public' => $product['prix_public'],
                     'quantity' => 1 ,
+                    
                 ];
                 
             }}
 
-        header('Location: index.php?action=afficherProduits');
+        header('Location: index.php?action=afficherProduits#nos-cookies');
         exit;
         
     }

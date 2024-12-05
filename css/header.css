@@ -10,14 +10,42 @@ header {
   box-shadow: 0 2px 15px rgba(165, 114, 83, 0.1); /* effet ombré */
 }
 
-
 nav {
   display: flex;
-  justify-content: space-between; /* espace égal entre chaque élément sur la barre de nav */
+  justify-content: space-between; /* espace entre les sections */
   align-items: center;
-  max-width: 1400px;
-  margin: 0 auto; /* la nav est centrée en horizontal sur la page */
-  padding: 0.5rem 2rem;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.nav-left {
+  display: flex;
+  justify-content: flex-start;
+  flex: 0 0 auto;
+  margin-left: -195px;
+}
+
+.nav-center {
+  flex: 1;
+  text-align: center;
+}
+
+.site-title {
+  font-family: "Berkshire Swash", cursive;
+  font-size: 39px;
+  margin: 0;
+  color: #fff9ef;
+  margin-left: 145px;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 0 0 auto;
+  gap: 2rem;
+  margin-right: -210px;
 }
 
 *,
@@ -33,24 +61,16 @@ nav {
   width: auto;
 }
 
-.menu {
-  display: flex;
-  align-items: center;
-  gap: 3rem; /* ajoute un espace entre mes éléments de la nav -> Nos cookies et Contact */
-}
-
-.menu a {
+.nav-right a {
   color: #fff9ef;
   text-decoration: none;
   font-weight: bold;
   font-size: 17px;
-  padding: 0.5rem;
   transition: all 0.3s ease;
-  position: relative;
   font-family: "Montserrat", sans-serif;
 }
 
-.menu a:hover {
+.nav-right a:hover {
   color: #744a31; /* quand on les survole */
 }
 

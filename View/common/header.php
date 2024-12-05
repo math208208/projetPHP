@@ -30,7 +30,11 @@
             </a>
         </div>
 
-        <div class="menu">
+        <div class="nav-center">
+            <span class="site-title">M&A Cookies</span>
+    </div>
+
+        <div class="nav-right">
             <a href="#nos-cookies">Nos cookies</a>
             <a href="">Contact</a>
 

@@ -1,10 +1,16 @@
 
 <footer>      
     <p>&copy <?= date('Y') ?> M&A Cookies. Tous droits réservés.</p>
+    
     <h4>M&A Cookies</h4>
+
+    <h3>Nous rejoindre</h3>
+
     <a href="index.php?action=adminClient" class="admin">
         <img src="assets/lock.png" alt="Administration"></a> 
-</footer>
+    
+
+    </footer>
 
 
 

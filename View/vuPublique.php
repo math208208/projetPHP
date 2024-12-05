@@ -17,7 +17,12 @@
 
 .cookie-card {
   transition: all 0.3s ease;
+  border-radius: 23px;
+  padding: 22px;
+  margin-bottom: 30px;
+  margin-left: 35px
 }
+
 
 .cookie-card:hover {
   transform: translateY(-10px);
