@@ -135,31 +135,47 @@ class ControllerPanier {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $totalHT=$_SESSION['paiement']['prixHT'];
             $totalTTC=$_SESSION['paiement']['prixTTC'];
-
-            $message="
-           
-                <html>
+            $cart= $_SESSION['panier'];
+            
+            
+        $message = "
+                <html lang='fr'>
                 <head>
-                    <title>Confirmation de votre commande</title>
+                    <title>Panier - M&A Cookies</title>
+                    <meta charset='UTF-8'>
+                    <style>
+                        body { font-family: Arial, sans-serif; }
+                        .produits { margin-top: 20px; }
+                        .element { border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; }
+                        .empty-cart { color: red; }
+                    </style>
                 </head>
                 <body>
-                    <h2>Bonjour ".$nom." ".$prenom.",</h2>
-                    <p>Nous avons bien reçu votre commande et elle a été enregistrée avec succès.</p>
-                    <p><strong>Détails de la commande :</strong></p>
-                    <ul>
-                        <li><strong>Numéro de commande : </strong>y'en a pas pour l'instant sorry</li>
-                        <li><strong>Date de commande : </strong>A l'instant</li>
-                        <li><strong>Montant HT : </strong>".$totalHT."</li>
-                        <li><strong>Montant total (TTC) : </strong>". $totalTTC."</li>
-                    </ul>
-                    
-                    <p>Merci pour votre confiance !</p>
-                    <p>Bien cordialement,</p>
-                    <p><strong>L'équipe de M&ACookie</strong></p>
+                    <main>
+                        <h1>Votre Panier</h1>
+                        <div class='produits'>";
+
+                foreach ($cart as $produit) {
+                    $message .= "
+                        <div class='element'>
+                            <div class='infos-produits'>
+                                <h3>" . htmlspecialchars($produit['titre']) . "</h3>
+                                <p>" . htmlspecialchars($produit['description']) . "</p>
+                                <h4>Prix: " . htmlspecialchars($produit['prix_public']) . " €</h4>
+                            </div>
+                            <p>Quantité: " . htmlspecialchars($produit['quantity']) . "</p>
+                        </div>";
+                }
+
+                $message .= "
+                        <p>Total HT : " . htmlspecialchars($totalHT) . " €</p>
+                        <p>Montant à payer (TTC): " . htmlspecialchars($totalTTC) . " €</p>";
+
+            $message .= "
+                        </div>
+                    </main>
                 </body>
-                </html>
-            
-            ";
+                </html>";
 
 
             // Appel au modèle pour envoyer l'email

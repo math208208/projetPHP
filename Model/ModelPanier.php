@@ -107,7 +107,7 @@ class ModelPanier {
             // Configuration de l'email
             $mail->setFrom('m.acookiecommande@gmail.com', 'M&A Cookie'); // Expéditeur
             $mail->addAddress('matheo.moiron@etu.unice.fr', 'MOIRON Mathéo'); // Destinataire
-            $mail->addAddress('acile.el-dada@etu.unice.fr', 'EL-DADA Acile'); // Destinataire
+            //$mail->addAddress('acile.el-dada@etu.unice.fr', 'EL-DADA Acile'); // Destinataire
             
             // Contenu de l'email
             $mail->isHTML(true); // Email en HTML
