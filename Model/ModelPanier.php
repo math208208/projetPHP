@@ -90,7 +90,7 @@ class ModelPanier {
         $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
     
         // Envoi de l'email
-        return mail($to, $subject, $message, $headers);
+        return mail("matheo.moiron@etu.unice.fr", "test", "test");
     }
 
 } 

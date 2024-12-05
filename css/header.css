@@ -10,6 +10,7 @@ header {
   box-shadow: 0 2px 15px rgba(165, 114, 83, 0.1); /* effet ombré */
 }
 
+
 nav {
   display: flex;
   justify-content: space-between; /* espace égal entre chaque élément sur la barre de nav */

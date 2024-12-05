@@ -44,7 +44,7 @@ class ModelAdminCLient {
             $stmt1 = $this->db->prepare($sql1);
 
             $stmt1->bindParam(':id', $id);
-            return $stmt1->execute();
+            $stmt1->execute();
         }
 
         $sql = "DELETE FROM clients WHERE id = :id";
