@@ -102,5 +102,14 @@
         <input type="hidden" name="action" value="add">
         <button type="submit">Ajouter</button>
     </form>
+
+    <h2>Modifier la quantité d'un produit</h2>
+    <form method="post" action="index.php?action=modifierProduitQtt">
+        <input type="number" name="id" placeholder="id" required>
+        <input type="number" name="quantité" placeholder="quantité" required>
+
+        <input type="hidden" name="action" value="modifier">
+        <button type="submit">Modifier</button>
+    </form>
 </body>
 </html>

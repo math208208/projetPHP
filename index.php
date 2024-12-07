@@ -79,6 +79,9 @@
         case 'findProduit':
             $adminControllerProduit->findProduit();
             break;
+        case 'modifierProduitQtt':
+            $adminControllerProduit->modifierProduit();
+            break;
 
         //Gestion de la table facturation
         case 'adminFacturation':
