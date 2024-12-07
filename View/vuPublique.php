@@ -86,6 +86,18 @@ text-align:left;
   margin-left: -2px;
 }
 
+.cookies-container h2 {
+  font-size: 43px;
+  margin-bottom: 20px;
+  font-family: "Berkshire Swash", cursive;
+}
+
+.cookies-container p {
+  font-size: 24px;
+  color: #555;
+  margin-bottom: 40px;
+}
+
 /**********/
 
 .banNew {

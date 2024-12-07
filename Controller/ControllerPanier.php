@@ -169,7 +169,7 @@ class ControllerPanier {
 
                 $message .= "
                         <p>Total HT : " . htmlspecialchars($totalHT) . " €</p>
-                        <p>Montant à payer (TTC): " . htmlspecialchars($totalTTC) . " €</p>";
+                        <p>Montant total de la commande (TTC): " . htmlspecialchars($totalTTC) . " €</p>";
 
             $message .= "
                         </div>
