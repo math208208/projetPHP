@@ -8,14 +8,14 @@
     <link rel="icon" type="image/png" href="assets/favicon.png">
     
 </head>
-
 <body>
     <h1>Gestion des Clients</h1>
 
+    <h2>Rechercher un client</h2>
     <!-- Formulaire de recherche -->
-    <form method="post" action="index.php?action=findClient">
+    <form method="post" class="search" action="index.php?action=findClient">
         <input type="text" name="search" placeholder="Rechercher un client..." value="<?= htmlspecialchars($_POST['search'] ?? '') ?>" >
-        <button type="submit">Rechercher</button>
+        <button class="button" type="submit">Rechercher</button>
     </form>
 
     <!-- Table des clients -->
@@ -41,7 +41,7 @@
                         <form method="post" action="index.php?action=deleteClient" style="display:inline;">
                             <input type="hidden" name="id" value="<?= $client['id'] ?>">
                             <input type="hidden" name="action" value="deleteClient">
-                            <button type="submit">Supprimer</button>
+                            <button class="button" type="submit">Supprimer</button>
                         </form>
                     </td>
                 </tr>
@@ -57,7 +57,7 @@
         <input type="text" name="prenom" placeholder="prenom" required>
         <input type="email" name="email" placeholder="email" required>
         <input type="hidden" name="action" value="add">
-        <button type="submit">Ajouter</button>
+        <button class="button" type="submit">Ajouter</button>
     </form>
 </body>
 </html>

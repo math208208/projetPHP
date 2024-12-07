@@ -44,7 +44,6 @@ nav {
   align-items: center;
   justify-content: flex-end;
   flex: 0 0 auto;
-  gap: 2rem;
   margin-right: -210px;
 }
 
@@ -78,8 +77,7 @@ nav {
 .cart-wrapper {
   position: relative;
   display: inline-block;
-  padding: 5px;
-  margin-left: 2rem;
+  /* PAS de margin-left: 2rem;*/
 }
 
 .notification {
@@ -111,7 +109,6 @@ nav {
   top: 50%;
   transform: translateY(-50%);
   background-color: #fff;
-  padding: 10px;
   border-radius: 5px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   z-index: 999;
@@ -121,21 +118,8 @@ nav {
   display: none;
 }
 
-.search-toggle:checked + .search-field {
-  display: block;
-}
-
-.search-field input {
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  width: 200px;
-}
-
 .search-icon {
   display: flex;
   align-items: center;
   cursor: pointer;
 }
-

@@ -16,13 +16,16 @@
 
 
 .cookie-card {
-  transition: all 0.3s ease;
-  border-radius: 23px;
-  padding: 22px;
+  background-color: #fff;
+  padding: 15px 30px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 400px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
   margin-bottom: 30px;
-  margin-left: 35px
 }
-
 
 .cookie-card:hover {
   transform: translateY(-10px);
@@ -70,6 +73,17 @@ text-align:left;
   text-align: center;
   padding: 0 20px;
 
+}
+
+.cookies-wrapper {
+  display: grid;
+  grid-template-columns: repeat(
+    4,
+    1fr
+  ); /* que 4 cartes de cookies , sur une ligne sinon on va a la ligne */
+  justify-items: center;
+  margin-top: 40px;
+  margin-left: -2px;
 }
 
 /**********/
@@ -187,7 +201,7 @@ text-align:left;
                             <h4>Prix: <?= $produit['prix_public'] ?> €</h4>
 
                             
-                            <form method="post" action="index.php?action=addToCart">
+                            <form method="post" action="index.php?action=addToCart#nos-cookies">
 
                                 <input type="hidden" name="product" value='<?= json_encode($produit) ?>'>
                                 <?php
