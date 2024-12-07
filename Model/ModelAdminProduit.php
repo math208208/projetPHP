@@ -55,16 +55,6 @@ class ModelAdminProduit {
         return $stmt1->execute();
     }
 
-
-    public function modifierProduit($id,$qtt){
-        $sql= "UPDATE gestion_stock SET quantité = :quantite WHERE produit_id = :id";
-        $stmt = $this->db->prepare($sql);
-        $stmt->bindParam(':id', $id);
-        $stmt->bindParam(':quantite', $qtt);
-        return $stmt->execute();
-
-    }
-
     public function deleteProduit($id) {
         $sql0 = "SELECT COUNT(*) FROM gestion_stock WHERE produit_id = :id";
         $stmt0 = $this->db->prepare($sql0);

@@ -154,30 +154,4 @@ class ModelPanier {
         return 0;
     }
 
-    public function decrementQttStock($idProduit,$qtt){
-        $sql= "UPDATE gestion_stock SET quantité = quantité - :quantite WHERE produit_id = :idProduit;";
-        $stmt = $this->db->prepare($sql);
-        $stmt->bindParam(':idProduit', $idProduit);
-        $stmt->bindParam(':quantite', $qtt);
-
-        $stmt->execute();
-
-
-
-
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    }
-
-
-    public function qttMaxProduit($idProduit) {
-        $sql = "SELECT quantité FROM gestion_stock WHERE produit_id = :idProduit;";
-        $stmt = $this->db->prepare($sql);
-        $stmt->bindParam(':idProduit', $idProduit, PDO::PARAM_INT);
-    
-        $stmt->execute(); // Exécute la requête
-    
-        $result = $stmt->fetch(PDO::FETCH_ASSOC); 
-        return $result ? $result['quantité'] : 0; 
-    }
 } 

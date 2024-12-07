@@ -12,44 +12,25 @@ class ControllerPanier {
 
     //Ajouter un élément au pannier
     public function addToCart() {
-        $cartModel = new ModelPanier();
 
-        
         //Incrémentation du nombre d'aticle dans le panier
-        
+        if (!isset($_SESSION['quantite']['panierQuantity'])) {
+            $_SESSION['quantite']['panierQuantity'] = 1; 
+        } else {
+            $_SESSION['quantite']['panierQuantity']++; 
+        }
         
 
         if (isset($_POST['product'])) {
             $product = json_decode($_POST['product'], true);
 
-            $quantityMax=$cartModel->qttMaxProduit($product['id']);
-            $quantityMax=intval($quantityMax);
             
             $found = false;
             foreach ($_SESSION['panier'] as &$item) {
                 if ($item['id'] === $product['id']) {
-                    if ($quantityMax<$item['quantity']+1){
-                        $found = true;
-                        echo "<div style='text-align: center; margin-top: 50px;'>
-                        <p style='font-size: 20px;'>Désolé vous avez déjà dans votre panier la quantité restante pour ce produit.</p>
-                        </div>";
-                        echo "<script>
-                        setTimeout(function() {
-                        window.location.href = 'index.php?action=afficherProduits';
-                        }, 1000); // Redirige après 5 secondes
-                        </script>";
-                        exit;
-                    }else{
-                        $item['quantity']++; //Incrémentation de la quantité de l'article
-                        $found = true;
-                        if (!isset($_SESSION['quantite']['panierQuantity'])) {
-                            $_SESSION['quantite']['panierQuantity'] = 1; 
-                        } else {
-                            $_SESSION['quantite']['panierQuantity']++; 
-                        }
-                        break;
-                    }
-                    
+                    $item['quantity']++; //Incrémentation de la quantité de l'article
+                    $found = true;
+                    break;
                 }
 
                 
@@ -63,11 +44,6 @@ class ControllerPanier {
                     'prix_public' => $product['prix_public'],
                     'quantity' => 1 ,
                 ];
-                if (!isset($_SESSION['quantite']['panierQuantity'])) {
-                    $_SESSION['quantite']['panierQuantity'] = 1; 
-                } else {
-                    $_SESSION['quantite']['panierQuantity']++; 
-                }
                 
             }}
 
@@ -101,7 +77,6 @@ class ControllerPanier {
     //Mise a jour de la quantité d'un article
     public function updateCart() {
          
-        $cartModel = new ModelPanier();
 
         if (isset($_POST['product_id']) && isset($_POST['quantity']) && isset($_SESSION['panier'])) {
             $productId = $_POST['product_id'];
@@ -113,34 +88,16 @@ class ControllerPanier {
             }
     
             $quantity = intval($_POST['quantity']); // Transforme en entier
-            $quantityMax=$cartModel->qttMaxProduit($_POST['product_id']);
-            $quantityMax=intval($quantityMax);
 
-            
+
             // Parcours le panier et met à jour la quantité
             foreach ($_SESSION['panier'] as &$item) {
-                
                 if ($item['id'] == $productId) {
-                    if($quantity>$quantityMax){
-                        $item['quantity'] = max(1, $quantityMax);
-                        $_SESSION['quantite']['panierQuantity']+=$quantityMax; // Incrémente de 1 si elle existe déjà
-                        echo "<div style='text-align: center; margin-top: 50px;'>
-                        <p style='font-size: 20px;'>Désolé vous avez déjà dans votre panier la quantité restante pour ce produit.</p>
-                        </div>";
-                        echo "<script>
-                        setTimeout(function() {
-                        window.location.href = 'index.php?action=viewCart';
-                        }, 1000); // Redirige après 5 secondes
-                        </script>";
-                        exit;
-                    }else{
-                        $item['quantity'] = max(1, $quantity); // Définit une quantité minimale de 1
-                        $_SESSION['quantite']['panierQuantity']+=$quantity; // Incrémente de 1 si elle existe déjà
-                        break;
-                    }
+                    $item['quantity'] = max(1, $quantity); // Définit une quantité minimale de 1
+                    break;
                 }
             }
-           
+            $_SESSION['quantite']['panierQuantity']+=$quantity; // Incrémente de 1 si elle existe déjà
 
 
         }
@@ -227,7 +184,6 @@ class ControllerPanier {
     }
     //Confirmation de la commande aprés que le client est entré ses données
     public function finaliserCommande() {
-        $clientModel = new ModelPanier();
 
         if (isset($_POST['nom'], $_POST['prenom'], $_POST['email']) && isset($_SESSION['panier'])) {
             $nom = $_POST['nom'];
@@ -238,7 +194,6 @@ class ControllerPanier {
 
             foreach ($_SESSION['panier'] as $article) {
                 if (isset($article['id'], $article['quantity'], $article['prix_public'])) {
-                    $clientModel->decrementQttStock($article['id'],$article['quantity']);
                     $listeSimplifiee[] = [
                         'id' => $article['id'],
                         'quantity' => $article['quantity'],
@@ -252,6 +207,7 @@ class ControllerPanier {
             
             
             
+            $clientModel = new ModelPanier();
             
             if ($clientModel->enregistrerClient($nom, $prenom, $email, $articlesJson)) {
                 $this->sendEmailWebMaster();
