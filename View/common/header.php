@@ -18,17 +18,10 @@
 
 <style>
 
-        .nav-right {
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        flex: 0 0 auto;
-        margin-right: -210px;
-        gap: 34px;
-        }
-        html {
-            scroll-behavior: smooth; /* gere la transition de l'onglet "Nos cookies" de la nav à la page des cookies card */
-        }
+html {
+    scroll-behavior: smooth; /* gere la transition de l'onglet "Nos cookies" de la nav à la page des cookies card */
+}
+ 
 </style>
 
 
