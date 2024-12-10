@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link rel="stylesheet" href="css/vuPanier.css">
+    <link rel="stylesheet" href="css/footer.css">
     
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap" rel="stylesheet">
@@ -67,5 +68,7 @@
             <?php endif; ?>
         </div>
     </main>
+
+    <?php require_once 'View/common/footer.php' ; ?>
 </body>
 </html>

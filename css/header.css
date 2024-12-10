@@ -10,6 +10,20 @@ header {
   box-shadow: 0 2px 15px rgba(165, 114, 83, 0.1); /* effet ombré */
 }
 
+
+.nav-right {
+display: flex;
+align-items: center;
+justify-content: flex-end;
+flex: 0 0 auto;
+margin-right: -210px;
+gap: 34px;
+}
+
+html {
+  scroll-behavior: smooth; /* gere la transition de l'onglet "Nos cookies" de la nav à la page des cookies card */
+}
+
 nav {
   display: flex;
   justify-content: space-between; /* espace entre les sections */
@@ -124,3 +138,4 @@ nav {
   align-items: center;
   cursor: pointer;
 }
+
