@@ -21,7 +21,13 @@ class ControllerAdminProduit {
         header(header: 'Location: index.php?action=adminProduit');
         exit;
     }
-
+    public function modifierProduit(){
+        $id=$_POST['id'];
+        $quantite=$_POST['quantité'];
+        $produits = $this->model->modifierProduit($id,$quantite); 
+        header(header: 'Location: index.php?action=adminProduit');
+        exit;
+    }
     public function addProduit(){
         $reference=$_POST['reference'];
         $description=$_POST['description'];
