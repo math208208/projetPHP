@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <link rel="icon" type="image/png" href="assets/favicon.png">
@@ -7,40 +8,41 @@
     <link rel="stylesheet" href="css/footer.css">
     <title>Accueil - M&A Cookies</title>
 
-    
-<style>
 
-</style>
+    <style>
+
+    </style>
 </head>
 
-<body> 
+<body>
 
     <main>
-    <div class="banNew">
-    <div class="contenuNew">
+        <div class="banNew">
+            <div class="contenuNew">
 
-            <div class="banText">
+                <div class="banText">
 
-                <span class="showNew">À venir - Nouvelle Recette</span>
+                    <span class="showNew">À venir - Nouvelle Recette</span>
 
-                <h1>Cookie à la cannelle</h1>
+                    <h1>Cookie à la cannelle</h1>
 
-                <p>Une création exclusive : un cookie au cœur cannelle fait maison. <br>Une texture parfaite entre croustillant et moelleux.</p><br>
+                    <p>Une création exclusive : un cookie au cœur cannelle fait maison. <br>Une texture parfaite entre
+                        croustillant et moelleux.</p><br>
 
-                <form method="post" action="index.php?action=addToCart">
+                    <form method="post" action="index.php?action=addToCart">
 
-                    <input type="hidden" name="product" value='<?= json_encode($nouveaute) ?>'>
-                    <p>À découvrir prochainement ...</p>
-                </form>
+                        <input type="hidden" name="product" value='<?= json_encode($nouveaute) ?>'>
+                        <p>À découvrir prochainement ...</p>
+                    </form>
+                </div>
+
+
+                <div class="banImg">
+                    <img src="<?= $nouveaute['image'] ?>" alt="Cookie cannelle">
+                </div>
+
             </div>
-
-
-            <div class="banImg">
-                <img src="<?= $nouveaute['image'] ?>" alt="Cookie cannelle">
-            </div>
-            
         </div>
-    </div>
 
 
         <div id="nos-cookies">
@@ -48,25 +50,25 @@
             <section class="cookies-container">
                 <h2>Nos Cookies Artisanaux</h2>
                 <p>Découvrez nos délicieux cookies faits maison, à déguster sans modération !</p>
-                
+
 
                 <div class="cookies-wrapper">
                     <?php foreach ($produits as $produit): ?>
 
-                        
-                        <div class="cookie-card">
-                            <img src="<?= $produit['image'] ?>" class="cookie-img" alt="cookie-img">
-                            <h3><?= $produit['titre'] ?></h3>
+
+                    <div class="cookie-card">
+                        <img src="<?= $produit['image'] ?>" class="cookie-img" alt="cookie-img">
+                        <h3><?= $produit['titre'] ?></h3>
 
 
-                            <p><?= $produit['descriptif'] ?></p>
-                            <h4>Prix: <?= $produit['prix_public'] ?> €</h4>
+                        <p><?= $produit['descriptif'] ?></p>
+                        <h4>Prix: <?= $produit['prix_public'] ?> €</h4>
 
-                            
-                            <form method="post" action="index.php?action=addToCart#nos-cookies">
 
-                                <input type="hidden" name="product" value='<?= json_encode($produit) ?>'>
-                                <?php
+                        <form method="post" action="index.php?action=addToCart#nos-cookies">
+
+                            <input type="hidden" name="product" value='<?= json_encode($produit) ?>'>
+                            <?php
                                 $quantite = null; 
                                 foreach ($stock as $stockItem) {
                                     if ($stockItem['produit_id'] == $produit['id']) {  
@@ -85,38 +87,38 @@
                                     font-weight: bold;'>Ajouter au panier</button>";
                                 }
                                 ?>
-                                
-                            </form>
-                            </div>
-                        <?php endforeach; ?>
+
+                        </form>
                     </div>
+                    <?php endforeach; ?>
+                </div>
 
 
             </section>
         </div>
 
         <script>
+        document.addEventListener('DOMContentLoaded', function() {
 
-            document.addEventListener('DOMContentLoaded', function () {
+
+            const titreCentral = document.querySelector('.titreCentral');
+
+            window.addEventListener('scroll', function() {
+
+                const scrollY = window.scrollY;
+                titreCentral.style.backgroundSize = `${100 + scrollY / 20}%`;
+                titreCentral.style.backgroundPosition = `center ${scrollY * 0.2}px`;
+                const opacity = Math.max(1 - scrollY / (window.innerHeight * 0.8), 0);
+                titreCentral.style.opacity = opacity;
 
 
-                const titreCentral = document.querySelector('.titreCentral');
-
-                window.addEventListener('scroll', function() {
-
-                    const scrollY = window.scrollY;
-                    titreCentral.style.backgroundSize = `${100 + scrollY / 20}%`;
-                    titreCentral.style.backgroundPosition = `center ${scrollY * 0.2}px`;
-                    const opacity = Math.max(1 - scrollY / (window.innerHeight * 0.8), 0);
-                    titreCentral.style.opacity = opacity;
-
-                    
-                });
             });
+        });
         </script>
     </main>
 
     <?php require_once 'View/common/footer.php' ; ?>
 
 </body>
+
 </html>

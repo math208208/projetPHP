@@ -1,8 +1,8 @@
-
 <?php require_once "View/common/header.php" ?>
 
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <title>Confirmer commande</title>
     <meta charset="UTF-8">
@@ -14,10 +14,11 @@
 
 
 </head>
+
 <body>
-   
+
     <main>
-    <h2>Confirmer votre commande</h2>
+        <h2>Confirmer votre commande</h2>
         <form action="index.php?action=finaliserCommande" method="post">
             <label for="nom">Nom :</label>
             <input type="text" id="nom" name="nom" required>
@@ -33,4 +34,5 @@
     </main>
 
 </body>
+
 </html>

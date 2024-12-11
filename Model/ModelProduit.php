@@ -23,6 +23,8 @@ class ModelProduit{
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
 
+    
+
 }
     
 

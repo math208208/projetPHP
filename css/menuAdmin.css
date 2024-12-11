@@ -1,4 +1,3 @@
-
 /* Styles de base pour le menu */
 #menuAdmin {
   position: fixed;
@@ -13,7 +12,6 @@
   border-right: 2px solid #b08968; /* Ligne visible */
   margin-top: 10%;
   border-radius: 15px;
-
 }
 
 /* Bout visible avec texte en colonne */
@@ -48,7 +46,7 @@
 /* Style pour chaque élément de menu */
 #menuAdmin ul li {
   padding: 15px;
-  margin-top:32px;
+  margin-top: 32px;
 }
 
 #menuAdmin ul li:hover {
@@ -56,11 +54,10 @@
   cursor: pointer;
 }
 
-a{
+a {
   text-decoration: none; /* Supprime le soulignement */
   color: white;
   display: block; /* Rend le lien cliquable sur toute la largeur */
   font-size: 18px;
   font-weight: bold;
-
 }

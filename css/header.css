@@ -10,14 +10,13 @@ header {
   box-shadow: 0 2px 15px rgba(165, 114, 83, 0.1); /* effet ombré */
 }
 
-
 .nav-right {
-display: flex;
-align-items: center;
-justify-content: flex-end;
-flex: 0 0 auto;
-margin-right: -210px;
-gap: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 0 0 auto;
+  margin-right: -210px;
+  gap: 34px;
 }
 
 html {
@@ -138,4 +137,3 @@ nav {
   align-items: center;
   cursor: pointer;
 }
-
