@@ -49,7 +49,7 @@
 
                         <form method="post" action="index.php?action=removeFromCart">
                             <input type="hidden" name="product_id" value='<?= $produit['id'] ?>'>
-                            <button type="submit">Supprimer</button>
+                            <button class="suppr" type="submit">Supprimer</button>
                         </form>
 
                     </div>
@@ -57,11 +57,11 @@
                 <?php endforeach; ?>
                 
                 <p>Total HT : <?= htmlspecialchars($prixTotalHT) ?> €</p>
-                <p>Montant a payer (TTC): <?= htmlspecialchars($prixTotalTTC) ?> €</p>
+                <p class="total" >Montant à payer (TTC): <?= htmlspecialchars($prixTotalTTC) ?> €</p>
 
                 <div class="cart-confirmation">
                     <form action="index.php?action=confirmerPanier" method="post">
-                        <button type="submit">Confirmer le panier</button>
+                        <button class="confirm" type="submit">Confirmer le panier</button>
                     </form>
                 </div>
 
