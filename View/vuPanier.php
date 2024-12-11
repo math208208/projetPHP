@@ -25,8 +25,11 @@
 
 
                     <div class="element">
+                        
+                        <img src="<?= $produit['image'] ?>" class="cookie-img2" alt="cookie-img">
 
                         <div class="infos-produits">
+                        
 
                             <h3><?= $produit['titre'] ?></h3>
 

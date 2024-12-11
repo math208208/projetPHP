@@ -19,6 +19,7 @@ h1 {
   margin-bottom: 40px;
 }
 
+
 .produits {
   display: flex;
   flex-direction: column;
@@ -30,11 +31,12 @@ h1 {
   border-radius: 15px;
   padding: 20px;
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
   transition: transform 0.3s ease;
 }
+
 
 .element h3 {
   color: #b08968;
@@ -96,6 +98,12 @@ button {
   font-size: 28px;
 }
 
+.cookie-img2 {
+  width: 45%;
+  height: auto;
+  border-radius: 8px;
+}
+
 /* effet responsive : un article par ligne */
 @media (max-width: 768px) {
   .element {
@@ -117,3 +125,4 @@ button {
     margin: 0 auto;
   }
 }
+

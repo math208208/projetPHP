@@ -62,6 +62,7 @@ class ControllerPanier {
                     'description' => $product['description'],
                     'prix_public' => $product['prix_public'],
                     'quantity' => 1 ,
+                    'image' => $product['image'],
                 ];
                 if (!isset($_SESSION['quantite']['panierQuantity'])) {
                     $_SESSION['quantite']['panierQuantity'] = 1; 
