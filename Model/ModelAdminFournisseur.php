@@ -11,14 +11,13 @@ class ModelAdminFournisseur {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function addFournisseur($nom, $produit, $quantite, $uniteMesure) {
-        $stmt = $this->db->prepare("INSERT INTO fournisseur (nom, produit, quantité, unitéMesure) 
-                                    VALUES (:nom, :produit, :quantite, :uniteMesure)");
+    public function addFournisseur($nom, $id_cookie, $quantite,) {
+        $stmt = $this->db->prepare("INSERT INTO fournisseur (nom, id_cookie, quantité) 
+                                    VALUES (:nom, :id_cookie, :quantite)");
         return $stmt->execute([
             ':nom' => $nom,
-            ':produit' => $produit,
+            ':id_cookie' => $id_cookie,
             ':quantite' => $quantite,
-            ':uniteMesure' => $uniteMesure
         ]);
     }
 
@@ -32,7 +31,7 @@ class ModelAdminFournisseur {
     }
 
     public function findFournisseur($search){
-        $sql= "SELECT * FROM fournisseur WHERE id LIKE :search OR nom LIKE :search OR produit LIKE :search OR unitéMesure LIKE :search OR quantité LIKE :search";
+        $sql= "SELECT * FROM fournisseur WHERE id LIKE :search OR nom LIKE :search OR id_cookie LIKE :search OR quantité LIKE :search";
         $stmt = $this->db->prepare($sql);
         $search = $search . '%';
         $stmt->bindParam(':search', $search);
@@ -43,6 +42,13 @@ class ModelAdminFournisseur {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
 
+    public function modifierProduit($id,$qtt){
+        $sql= "UPDATE gestion_stock SET quantité = quantité+:quantite WHERE produit_id = :id";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindParam(':id', $id);
+        $stmt->bindParam(':quantite', $qtt);
+        return $stmt->execute();
 
+    }
 }
 ?>

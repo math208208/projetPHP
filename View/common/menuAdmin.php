@@ -26,7 +26,7 @@
         <a href="index.php?action=adminFournisseur">Fournisseurs</a>
     </li>   
     <li>
-        <a href="">Compta</a>
+        <a href="index.php?action=adminCompta">Comptabilité</a>
     </li>   
   </ul>
 </div>

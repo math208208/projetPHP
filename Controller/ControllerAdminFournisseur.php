@@ -23,13 +23,12 @@ class ControllerAdminFournisseur {
 
     public function addFournisseur(){
         $nom = $_POST['nom'];
-        $produit = $_POST['produit'];
+        $id_cookie = $_POST['id_cookie'];
         $quantite = $_POST['quantité'];
-        $uniteMesure = $_POST['unitéMesure'];
 
         // Appel au modèle pour insérer dans la base de données
-        $fournisseurs = $this->model->addFournisseur($nom, $produit, $quantite, $uniteMesure);
-
+        $fournisseurs = $this->model->addFournisseur($nom, $id_cookie, $quantite);
+        $this->modifierProduit($id_cookie,$quantite);
         // Redirection après traitement
         header('Location: index.php?action=adminFournisseur');
         exit;
@@ -42,6 +41,14 @@ class ControllerAdminFournisseur {
         require 'View/vuAdminFournisseur.php';
 
     }
+
+    public function modifierProduit($id_cookie,$qtt){
+        $id=$id_cookie;
+        $quantite=$qtt;
+        $this->model->modifierProduit($id,$quantite); 
+        return;
+    }
+    
 }
 
 ?>

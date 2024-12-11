@@ -18,9 +18,7 @@
 
 <style>
 
-html {
-    scroll-behavior: smooth; /* gere la transition de l'onglet "Nos cookies" de la nav à la page des cookies card */
-}
+
  
 </style>
 

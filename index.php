@@ -8,6 +8,7 @@
     require_once 'Controller/ControllerAdminProduit.php';
     require_once 'Controller/ControllerAdminFacturation.php';
     require_once 'Controller/ControllerAdminFournisseur.php';
+    require_once 'Controller/ControllerAdminCompta.php';
 
 
 
@@ -21,6 +22,7 @@
     $adminControllerProduit=new ControllerAdminProduit();
     $adminControllerFacturation=new ControllerAdminFacturation();
     $adminControllerFournisseur=new ControllerAdminFournisseur();
+    $adminControllerCompta=new ControllerAdminCompta();
 
 
 
@@ -79,9 +81,7 @@
         case 'findProduit':
             $adminControllerProduit->findProduit();
             break;
-        case 'modifierProduitQtt':
-            $adminControllerProduit->modifierProduit();
-            break;
+
 
         //Gestion de la table facturation
         case 'adminFacturation':
@@ -108,6 +108,10 @@
             $adminControllerFournisseur->deleteFournisseur();
             break;
         
+        //Gestion compta admin
+        case 'adminCompta':
+            $adminControllerCompta->viewAdminCompta();
+            break;
         
         default:
             echo "Action non reconnue.";

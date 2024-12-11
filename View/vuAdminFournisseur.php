@@ -27,9 +27,8 @@
         <thead>
                 <th>ID</th>
                 <th>Nom du fournisseur</th>
-                <th>Produit</th>
+                <th>Id du cookie</th>
                 <th>Quantité</th>
-                <th>Unité de mesure</th>
                 <th>Date de la commande</th>
                 <th>Action</th>
             </tr>
@@ -40,9 +39,8 @@
                 <tr>
                     <td><?= $fournisseur['id'] ?></td>
                     <td><?= htmlspecialchars($fournisseur['nom']) ?></td>
-                    <td><?= htmlspecialchars($fournisseur['produit']) ?></td>
+                    <td><?= htmlspecialchars($fournisseur['id_cookie']) ?></td>
                     <td><?= htmlspecialchars($fournisseur['quantité']) ?></td>
-                    <td><?= htmlspecialchars($fournisseur['unitéMesure']) ?></td>
                     <td><?= htmlspecialchars($fournisseur['date_commande']) ?></td>
 
                     <td>
@@ -62,17 +60,8 @@
     <h2>Ajouter un fournisseur</h2>
     <form method="post" action="index.php?action=addFournisseur">
         <input type="text" name="nom" placeholder="Nom" required>
-        <input type="text" name="produit" placeholder="Produit" required>
+        <input type="text" name="id_cookie" placeholder="id cookie" required>
         <input type="number" name="quantité" placeholder="Quantité" required min="1" required>
-
-        <select name="unitéMesure" required>
-            <option value="">Choisissez une unité de mesure</option>
-            <option value="u">Unité</option>
-            <option value="L">L</option>
-            <option value="cl">cl</option>
-            <option value="Kg">Kg</option>
-            <option value="g">g</option>
-        </select>
         
         <input type="hidden" name="action" value="add">
         <button type="submit">Ajouter</button>
