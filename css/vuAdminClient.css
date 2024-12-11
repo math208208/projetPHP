@@ -14,6 +14,12 @@ h1 {
   margin-bottom: 15px;
 }
 
+div.adminmessage {
+  position: fixed;
+  margin-top: 18%;
+  margin-left: 42%;
+}
+
 h2 {
   text-align: center;
   color: #504031;

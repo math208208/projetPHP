@@ -19,6 +19,10 @@
 </header>
 
 <body>
+
+    <div class="adminmessage">
+        Bienvenue dans la zone admin
+    </div>
     <h1>Gestion des Clients</h1>
 
     <!-- Formulaire de recherche -->
@@ -69,6 +73,8 @@
         <input type="hidden" name="action" value="add">
         <button class="button" type="submit">Ajouter</button>
     </form>
+
+
 </body>
 
 </html>
