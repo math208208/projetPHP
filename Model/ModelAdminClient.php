@@ -69,5 +69,23 @@ class ModelAdminCLient {
         }
 
 
+    public function getStock(){
+        $sql= "SELECT * FROM gestion_stock";
+        $stmt = $this->db->prepare($sql);
+
+
+        $stmt->execute();
+
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+                    }
+    
+        
+    public function getAllProduits() {
+        $stmt = $this->db->query("SELECT * FROM produits");
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
 }
 ?>

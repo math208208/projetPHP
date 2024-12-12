@@ -15,14 +15,39 @@
 
     <?php require_once 'View/common/menuAdmin.php' ; ?>
 
-
 </header>
 
 <body>
 
+    <?php $hasCriticalStock = false; ?>
+    <?php foreach ($stocks as $stock): ?>
+        <?php if ($stock['quantité'] < $stock['seuil_critique']): ?>
+            <?php $hasCriticalStock = true; ?>
+        <?php endif; ?>
+    <?php endforeach; ?>
+
     <div class="adminmessage">
-        Bienvenue dans la zone admin
+        <button>X</button>
+        <h3>Alerte !</h3>
+        <p>Des cookie sont en dessous du seuil critique :</p>
+        <?php foreach ($stocks as $stock): ?>
+            <?php if ($stock['quantité'] < $stock['seuil_critique']): ?>
+                <?php foreach ($produits as $produit): ?>
+                    <?php if ($produit['id'] === $stock['produit_id']): ?>
+                        <div class="prodRupture">
+                            <img src="<?= $produit['icone'] ?>" class="imgRupt" alt="cookie-img">
+                            <p><?= $produit['reference'] ?></p>
+                        </div>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        <?php endforeach; ?>
+        <form method="post" class="search" action="index.php?action=adminFournisseur">
+            <button type="submit">Fournisseur</button>
+        </form>
     </div>
+
+
     <h1>Gestion des Clients</h1>
 
     <!-- Formulaire de recherche -->

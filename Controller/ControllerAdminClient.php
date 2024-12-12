@@ -11,6 +11,8 @@ class ControllerAdminCLient {
     
     public function viewAdminClient() {
         $clients = $this->model->getClients(); 
+        $stocks=$this->model->getStock();
+        $produits=$this->model->getAllProduits();
         require 'View/vuAdminClient.php';
     }
     

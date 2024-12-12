@@ -16,8 +16,27 @@ h1 {
 
 div.adminmessage {
   position: fixed;
-  margin-top: 18%;
-  margin-left: 42%;
+  margin-top: 15%;
+  margin-left: 32%;
+  background-color: #504031cd;
+  padding-left: 150px;
+  padding-right: 150px;
+  padding-bottom: 150px;
+  padding-top: 20px;
+
+  border-radius: 15px;
+}
+
+.imgRupt {
+  max-width: 75px;
+  border-radius: 20px;
+  transition: transform 0.5s ease;
+}
+
+.prodRupture {
+  display: grid;
+
+  justify-items: center;
 }
 
 h2 {
