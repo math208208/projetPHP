@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/vuAdminClient.css">
     <link rel="stylesheet" href="css/menuAdmin.css">
+    <link rel="stylesheet" href="css/popup.css">
+
     <link rel="icon" type="image/png" href="assets/favicon.png">
 
 </head>
@@ -27,24 +29,34 @@
     <?php endforeach; ?>
 
     <div class="adminmessage <?= $hasCriticalStock ? '' : 'hidden' ?>">
-        <button>X</button>
-        <h3>Alerte !</h3>
-        <p>Des cookie sont en dessous du seuil critique :</p>
+    <div class="buttonQuitter">
+        <button id="closeButton" class="close-button">Quitter</button>
+    </div>
+    <h3 class="alerte">Alerte !</h3>
+    <p class="infoMessage">Ces cookies sont en dessous du seuil critique :</p>
+    
+    <div class="containerRupture"> 
         <?php foreach ($stocks as $stock): ?>
         <?php if ($stock['quantité'] < $stock['seuil_critique']): ?>
         <?php foreach ($produits as $produit): ?>
         <?php if ($produit['id'] === $stock['produit_id']): ?>
         <div class="prodRupture">
-            <img src="<?= $produit['icone'] ?>" class="imgRupt" alt="cookie-img">
-            <p><?= $produit['reference'] ?></p>
+            <div>
+                <img src="<?= $produit['icone'] ?>" class="imgRupt" alt="cookie-img">
+                <p><?= $produit['reference'] ?></p>
+            </div>
         </div>
         <?php endif; ?>
         <?php endforeach; ?>
         <?php endif; ?>
         <?php endforeach; ?>
-        <form method="post" class="search" action="index.php?action=adminFournisseur">
-            <button type="submit">Fournisseur</button>
-        </form>
+    </div>
+    
+    
+    <form method="post"  action="index.php?action=adminFournisseur">
+        <button type="submit" class="fournisseurPop">Aller vers gestion fournisseur</button>
+    </form>
+
     </div>
 
 
@@ -99,6 +111,14 @@
         <button class="button" type="submit">Ajouter</button>
     </form>
 
+
+
+    <script>
+    document.getElementById('closeButton').addEventListener('click', function() {
+        const adminMessage = document.querySelector('.adminmessage');
+        adminMessage.style.display = 'none'; // Cache la div
+    });
+    </script>
 
 </body>
 
