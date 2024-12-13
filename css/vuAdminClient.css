@@ -27,6 +27,10 @@ div.adminmessage {
   border-radius: 15px;
 }
 
+.hidden {
+  display: none;
+}
+
 .imgRupt {
   max-width: 75px;
   border-radius: 20px;
