@@ -1,38 +1,50 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <title>Admin - M&A Cookies</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/menuAdmin.css">
+    <link rel="stylesheet" href="css/vuAdmin.css">
     <link rel="icon" type="image/png" href="assets/favicon.png">
-
 </head>
+
+
 <header>
-
     <?php require_once 'View/common/menuAdmin.php' ; ?>
-
 </header>
+
 
 <body>
     <h1>Comptabilité</h1>
 
-    <p>Vous avez eu <?=$nbCommande ?> commandes cette année</p>
-    <p>Votre plus grosse commande vous a rapporté <?=$plusGrosseCom ?> euros</p>
-    <p>Vous avez passé <?=$nbComFourni ?> commandes auprés de votre fournisseur</p>
-    <p>Vous avez acheté <?=$nbTotalCookieAchette ?> cookies et en avez vendu <?=$nbCookieVendu ?></p>
-    <p>Vous avez dépensé <?=$totalDepense ?> euros</p>
-    <p>Votre chiffre d'affaire est de <?=$CAht ?> euros</p>
-    <p>En conclusion cette année vous etes a <?=$result ?> euros</p>
+    <div class="stats-container">
+        <div class="stat-card">
+            <p>Nombre de commandes cette année : <?=$nbCommande ?></p>
+            <p>Plus grosse commande : <?=$plusGrosseCom ?> euros</p>
+        </div>
 
+        <div class="stat-card">
+            <p>Commandes fournisseur : <?=$nbComFourni ?></p>
+            <p>Dépenses totales : <?=$totalDepense ?> euros</p>
+        </div>
 
+        <div class="stat-card">
+            <p>Cookies achetés : <?=$nbTotalCookieAchette ?></p>
+            <p>Cookies vendus : <?=$nbCookieVendu ?></p>
+    </div>
 
+        <div class="stat-card">
 
+            <p>Chiffre d'affaires HT : <?=$CAht ?> euros</p>
+        </div>
 
+        <div class="stat-card result-card">
 
+                <p>Résultat annuel : <?=$result ?> euros</p>
+        </div>
+    </div>
 
 
 </body>
-
 </html>

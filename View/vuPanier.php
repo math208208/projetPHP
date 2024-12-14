@@ -74,7 +74,13 @@
         </div>
     </main>
 
-    <?php require_once 'View/common/footer.php' ; ?>
+    <footer>
+    <p>&copy <?= date('Y') ?> M&A Cookies. Tous droits réservés.</p>
+    <h4>M&A Cookies</h4>
+    <a href="index.php?action=adminClient" class="admin">
+        <img src="assets/lock.png" alt="Administration"></a>
+</footer>
+
 </body>
 
 </html>
