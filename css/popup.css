@@ -71,6 +71,8 @@ div.adminmessage {
   padding: 7px 7px;
   color: #f8f4f0;
   font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .close-button {
