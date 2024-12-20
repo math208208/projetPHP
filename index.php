@@ -9,6 +9,10 @@
     require_once 'Controller/ControllerAdminFacturation.php';
     require_once 'Controller/ControllerAdminFournisseur.php';
     require_once 'Controller/ControllerAdminCompta.php';
+    require_once 'Controller/ControllerClient.php';
+    require_once 'Controller/ControllerCommandeClient.php';
+
+
 
 
 
@@ -23,6 +27,10 @@
     $adminControllerFacturation=new ControllerAdminFacturation();
     $adminControllerFournisseur=new ControllerAdminFournisseur();
     $adminControllerCompta=new ControllerAdminCompta();
+    $controllerClient=new ControllerClient();
+    $controllerCommandeClient=new ControllerCommandeClient();
+
+
 
 
 
@@ -37,7 +45,11 @@
             $panierController->addToCart();
             break;
         case 'viewCart':
-            $panierController->viewCart();
+            if(empty($_SESSION['client'])){
+                $controllerClient->afficherConnexion();
+            }else{
+                $panierController->viewCart();
+            }
             break;     
         case 'updateCart':
             $panierController->updateCart();
@@ -112,7 +124,22 @@
         case 'adminCompta':
             $adminControllerCompta->viewAdminCompta();
             break;
-        
+
+
+        //Connexion Client
+        case 'clientConnect':
+            $controllerClient->connexionClient();
+            break;
+
+        //Commandes Client
+        case 'afficherCommande':
+            if(empty($_SESSION['client'])){
+                $controllerClient->afficherConnexion();
+            }else{
+                $controllerCommandeClient->afficherCommande();
+            }
+            break;
+            
         default:
             echo "Action non reconnue.";
 }

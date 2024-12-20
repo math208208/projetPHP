@@ -154,7 +154,11 @@ class ControllerPanier {
     
         // Vérifie si le panier existe
         if (isset($_SESSION['panier']) && !empty($_SESSION['panier'])) {
-            require 'View/vuConfirmerPanier.php'; 
+            if(isset($_SESSION['client'])){
+                $this->finaliserCommande();
+            }else{
+                require 'View/afficherProduits.php'; 
+            }
         } else {
             header('Location: index.php?action=afficherProduits');
             exit;
@@ -226,62 +230,48 @@ class ControllerPanier {
             $success = $cartModel->sendClient($message,$email);
         }
     }
+
+
+
+
     //Confirmation de la commande aprés que le client est entré ses données
     public function finaliserCommande() {
         $clientModel = new ModelPanier();
-
-        if (isset($_POST['nom'], $_POST['prenom'], $_POST['email']) && isset($_SESSION['panier'])) {
-            $nom = $_POST['nom'];
-            $prenom = $_POST['prenom'];
-            $email = $_POST['email'];
             
-            $listeSimplifiee = [];
+        $listeSimplifiee = [];
 
-            foreach ($_SESSION['panier'] as $article) {
-                if (isset($article['id'], $article['quantity'], $article['prix_public'])) {
-                    $clientModel->decrementQttStock($article['id'],$article['quantity']);
-                    $listeSimplifiee[] = [
-                        'id' => $article['id'],
-                        'quantity' => $article['quantity'],
-                        'prix_public' => $article['prix_public']
-                    ];
-                }
+        foreach ($_SESSION['panier'] as $article) {
+            if (isset($article['id'], $article['quantity'], $article['prix_public'])) {
+                $clientModel->decrementQttStock($article['id'],$article['quantity']);
+                $listeSimplifiee[] = [
+                    'id' => $article['id'],
+                    'quantity' => $article['quantity'],
+                    'prix_public' => $article['prix_public']
+                ];
             }
-
-            $articlesJson=json_encode($listeSimplifiee);
-
-            
-            
-            
-            
-            if ($clientModel->enregistrerClient($nom, $prenom, $email, $articlesJson)) {
-                $this->sendEmailWebMaster();
-                $this->sendEmailClient($email,$nom,$prenom,$articlesJson);
-                $_SESSION['quantite']['panierQuantity']=0;
-
-                 // Afficher le message de confirmation avec un délai
-                echo "<div style='text-align: center; margin-top: 50px;'>
-                <p style='font-size: 20px;'>Merci, votre commande a bien été enregistrée. Vous allez recevoir un email de confirmation.</p>
-                </div>";
-                 echo "<script>
-                setTimeout(function() {
-                    window.location.href = 'index.php?action=afficherProduits';
-                }, 4000); // Redirige après 5 secondes
-                </script>";
-
-                // Vider le panier après la commande
-                unset($_SESSION['panier']);
-
-            
-            } else {
-                echo "<div style='text-align: center; margin-top: 50px;'>
-                <p style='font-size: 20px; color: red;'>Une erreur est survenue lors de l'enregistrement de votre commande.</p>
-                </div>";
-            }
-        } else {
-            header(header: 'Location: index.php?action=afficherProduits');
-            exit;
         }
+
+        $articlesJson=json_encode($listeSimplifiee);
+        $mailClient=$_SESSION['client']['email'];
+        $clientModel->enregistrerClient($mailClient,$articlesJson);
+        $this->sendEmailWebMaster();
+        $this->sendEmailClient($_SESSION['client']['email'],$_SESSION['client']['nom'],$_SESSION['client']['prenom'],$articlesJson);
+        $_SESSION['quantite']['panierQuantity']=0;
+
+        // Afficher le message de confirmation avec un délai
+        echo "<div style='text-align: center; margin-top: 50px;'>
+        <p style='font-size: 20px;'>Merci, votre commande a bien été enregistrée. Vous allez recevoir un email de confirmation.</p>
+        </div>";
+            echo "<script>
+        setTimeout(function() {
+            window.location.href = 'index.php?action=afficherProduits';
+        }, 4000); // Redirige après 5 secondes
+        </script>";
+
+        // Vider le panier après la commande
+        unset($_SESSION['panier']);
+        exit;
+        
     }
 
 

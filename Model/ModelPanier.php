@@ -16,27 +16,7 @@ class ModelPanier {
     }
 
     //Enregistrement du client + remplissage de la table facturation
-    public function enregistrerClient($nom, $prenom, $email, $listeJson) {
-        //Recuperation de l'email du client pour voir si le client existe deja
-        $sql0 = "SELECT COUNT(*) FROM clients WHERE email = :email";
-        $stmt0 = $this->db->prepare($sql0);
-        $stmt0->bindParam(':email', $email);
-        $stmt0->execute();
-
-        $exist=$stmt0->fetchColumn() > 0;
-
-        //Si le client n'existe pas le creer
-        if($exist==false){
-            $sql = "INSERT INTO clients (nom, prenom, email) 
-            VALUES (:nom, :prenom, :email)";
-            $stmt = $this->db->prepare($sql);
-
-            $stmt->bindParam(':nom', $nom);
-            $stmt->bindParam(':prenom', $prenom);
-            $stmt->bindParam(':email', $email);
-
-            $stmt->execute();
-        }
+    public function enregistrerClient( $email, $listeJson) {
        
         //Recuperation de l'id du client par rapport a sont email
         $recupId = "SELECT id FROM clients WHERE email = :email";
