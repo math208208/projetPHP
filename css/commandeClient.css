@@ -1,0 +1,77 @@
+main {
+  padding: 40px 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+  color: #504031;
+  font-family: "Montserrat", sans-serif;
+  font-size: 32px;
+  margin-bottom: 40px;
+}
+
+.commande {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.element {
+  background-color: #f8f4f0;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 4px 8px rgba(176, 137, 104, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.element:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(176, 137, 104, 0.2);
+}
+
+.element p {
+  color: #666;
+  font-size: 17px;
+  margin: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0;
+}
+
+.element p:last-child {
+  color: #b08968;
+  font-weight: bold;
+  font-size: 19px;
+  border-bottom: none;
+}
+
+.empty-commande {
+  text-align: center;
+  padding: 40px;
+  color: gray;
+  font-size: 28px;
+}
+
+footer {
+  background-color: #504031;
+  color: #fff9ef;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  margin-top: 27vw;
+}
+
+@media (max-width: 768px) {
+  .element {
+    margin: 0 10px;
+  }
+
+  .element p {
+    flex-direction: column;
+    text-align: center;
+    gap: 5px;
+  }
+}

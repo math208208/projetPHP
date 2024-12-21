@@ -16,7 +16,7 @@
 <body>
     <main>
         <h2>
-            Entrer vos information pour voir vos commande ou pour pouvoir commander
+            Espace de connexion
         </h2>
         <form action="index.php?action=clientConnect" method="post">
             <label for="nom">Nom :</label>
