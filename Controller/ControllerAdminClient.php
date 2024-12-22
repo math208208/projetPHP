@@ -27,7 +27,9 @@ class ControllerAdminCLient {
         $nom=$_POST['nom'];
         $prenom=$_POST['prenom'];
         $email=$_POST['email'];
-        $clients = $this->model->addClient($nom,$prenom,$email ); 
+        $tel=$_POST['tel'];
+        $adresse=$_POST['adresse'];
+        $clients = $this->model->addClient($nom,$prenom,$email, $tel, $adresse ); 
         header(header: 'Location: index.php?action=adminClient');
         exit;
     }

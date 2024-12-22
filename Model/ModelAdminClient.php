@@ -12,7 +12,7 @@ class ModelAdminCLient {
     }
 
     // Ajouter un client
-    public function addClient($nom, $prenom, $email) {
+    public function addClient($nom, $prenom, $email,$tel, $adresse) {
         $sql0 = "SELECT COUNT(*) FROM clients WHERE email = :email";
         $stmt0 = $this->db->prepare($sql0);
         $stmt0->bindParam(':email', $email);
@@ -24,8 +24,8 @@ class ModelAdminCLient {
             echo 'Ce client existe deja dans la BD';
 
         }else{
-            $stmt = $this->db->prepare("INSERT INTO clients (nom, prenom, email) VALUES (:nom, :prenom, :email)");
-            return $stmt->execute(['nom' => $nom, 'prenom' => $prenom, 'email' => $email]);
+            $stmt = $this->db->prepare("INSERT INTO clients (nom, prenom, email, tel, adresse) VALUES (:nom, :prenom, :email,:tel, :adresse)");
+            return $stmt->execute(['nom' => $nom, 'prenom' => $prenom, 'email' => $email, 'tel'=>$tel, 'adresse'=>$adresse]);
         }
         
     }

@@ -72,7 +72,7 @@ class ControllerPanier {
                 
             }}
 
-        header('Location: index.php?action=afficherProduits');
+        header(header: 'Location: index.php?action=afficherProduits');
         exit;
         
     }
