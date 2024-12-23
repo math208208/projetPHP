@@ -72,7 +72,9 @@ class ControllerPanier {
                 
             }}
 
-        header(header: 'Location: index.php?action=afficherProduits');
+        header("Location: " . $_SERVER['HTTP_REFERER']);
+
+
         exit;
         
     }
