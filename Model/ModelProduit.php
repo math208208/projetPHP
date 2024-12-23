@@ -65,27 +65,33 @@ class ModelProduit{
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         return $result['total'] ?? 0;
     }
-    public function getProduitsByCategoryAndPagination($category, $limit, $offset) {
+
+
+
+public function getProduitsByCategoryAndPagination($category, $limit, $offset) {
         $sql = "SELECT * FROM produits";
-        
+    
         // Filtrer par catégorie si nécessaire
         if ($category === 'sans_chocolat') {
-            $sql .= " WHERE categorie = :category";
-        }else if ($category === 'box') {
-            $sql .= " WHERE categorie = :category";
+            $sql .= " WHERE description NOT LIKE :filter AND descriptif NOT LIKE :filter";
+        } else if ($category === 'box') {
+            $sql .= " WHERE description LIKE :filter";
         }
-        
+    
         $sql .= " LIMIT :limit OFFSET :offset";
         $stmt = $this->db->prepare($sql);
     
-        if ($category !== 'all') {
-            $stmt->bindValue(':category', $category, PDO::PARAM_STR);
+        // Ajout des paramètres
+        if ($category === 'sans_chocolat') {
+            $stmt->bindValue(':filter', '%chocolat%', PDO::PARAM_STR);
+        } else if ($category === 'box') {
+            $stmt->bindValue(':filter', '%PACK%', PDO::PARAM_STR);
         }
-        $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
-        $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+    
+        $stmt->bindValue(':limit', (int)$limit, PDO::PARAM_INT);
+        $stmt->bindValue(':offset', (int)$offset, PDO::PARAM_INT);
     
         $stmt->execute();
-    
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
     
@@ -93,14 +99,19 @@ class ModelProduit{
         $sql = "SELECT COUNT(*) as total FROM produits";
     
         // Filtrer par catégorie si nécessaire
-        if ($category !== 'all') {
-            $sql .= " WHERE categorie = :category";
+        if ($category === 'sans_chocolat') {
+            $sql .= " WHERE description NOT LIKE :filter AND descriptif NOT LIKE :filter";
+        } else if ($category === 'box') {
+            $sql .= " WHERE description LIKE :filter";
         }
     
         $stmt = $this->db->prepare($sql);
     
-        if ($category !== 'all') {
-            $stmt->bindValue(':category', $category, PDO::PARAM_STR);
+        // Ajout des paramètres
+        if ($category === 'sans_chocolat') {
+            $stmt->bindValue(':filter', '%chocolat%', PDO::PARAM_STR);
+        } else if ($category === 'box') {
+            $stmt->bindValue(':filter', '%PACK%', PDO::PARAM_STR);
         }
     
         $stmt->execute();
@@ -108,6 +119,7 @@ class ModelProduit{
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         return $result['total'] ?? 0;
     }
+
 }
     
 

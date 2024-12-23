@@ -71,7 +71,7 @@ class ControllerProduit {
         $totalPages = ceil($totalProduits / $produitsParPage);
     
         // Inclure la vue
-        include_once 'View/vuProduits.php';
+        include_once 'View/vuPublique.php';
     }
     
 

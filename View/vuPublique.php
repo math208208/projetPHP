@@ -54,16 +54,18 @@
                 <p>Découvrez nos délicieux cookies faits maison, à déguster sans modération !</p>
 
                 <form method="post" action="index.php?action=filtreCategorie" class="category-filter">
-                    <select name="category">
-                        <option value=" all" <?= isset($category) && $category == 'all' ?>>Tout
+                    <select name="category" onchange="this.form.submit()">
+                        <option value="all"
+                            <?= isset($_POST['category']) && $_POST['category'] === 'all' ? 'selected' : '' ?>>Tout
                         </option>
-                        <option value="sans_chocolat" <?= isset($category) && $category == 'sans_chocolat' ?>>Sans
-                            Chocolat
+                        <option value="sans_chocolat"
+                            <?= isset($_POST['category']) && $_POST['category'] === 'sans_chocolat' ? 'selected' : '' ?>>
+                            Sans Chocolat</option>
+                        <option value="box"
+                            <?= isset($_POST['category']) && $_POST['category'] === 'box' ? 'selected' : '' ?>>Box
                         </option>
-                        <option value="box" <?= isset($category) && $category == 'box'?>>Box</option>
                     </select>
                     <input type="hidden" name="action" value="filterByCategory">
-
                 </form>
 
                 <div class="cookies-wrapper">
