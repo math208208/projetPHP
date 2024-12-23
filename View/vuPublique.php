@@ -45,12 +45,26 @@
         </div>
 
 
+
+
         <div id="nos-cookies">
 
             <section class="cookies-container">
                 <h2>Nos Cookies Artisanaux</h2>
                 <p>Découvrez nos délicieux cookies faits maison, à déguster sans modération !</p>
 
+                <form method="post" action="index.php?action=filtreCategorie" class="category-filter">
+                    <select name="category">
+                        <option value=" all" <?= isset($category) && $category == 'all' ?>>Tout
+                        </option>
+                        <option value="sans_chocolat" <?= isset($category) && $category == 'sans_chocolat' ?>>Sans
+                            Chocolat
+                        </option>
+                        <option value="box" <?= isset($category) && $category == 'box'?>>Box</option>
+                    </select>
+                    <input type="hidden" name="action" value="filterByCategory">
+
+                </form>
 
                 <div class="cookies-wrapper">
                     <?php foreach ($produits as $produit): ?>

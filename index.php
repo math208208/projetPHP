@@ -39,6 +39,12 @@
         case 'afficherProduits':
             $controller->afficherProduits();
             break;
+        case 'searchCookie':
+            $controller->searchProduits();
+            break;
+        case 'filtreCategorie':
+            $controller->filterByCategory();
+            break;
         
         //Gestion du panier
         case 'addToCart':

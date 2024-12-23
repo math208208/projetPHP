@@ -20,6 +20,7 @@ class ModelProduit{
 
     
     public function getProduitsPagines($page, $produitsParPage) {
+        
         $start = ($page - 1) * $produitsParPage;
         $sql = "SELECT * FROM produits LIMIT :start, :produitsParPage";
         $stmt = $this->db->prepare($sql);
@@ -33,6 +34,79 @@ class ModelProduit{
         $sql = "SELECT COUNT(*) AS total FROM produits";
         $stmt = $this->db->query($sql);
         return $stmt->fetch(PDO::FETCH_ASSOC)['total'];
+    }
+
+
+    public function getProduitsBySearch($searchTerm, $limit, $offset) {
+        $sql = "SELECT * FROM produits 
+                WHERE titre LIKE :search OR description LIKE :search 
+                OR descriptif LIKE :search 
+                LIMIT :limit OFFSET :offset";
+
+        $stmt = $this->db->prepare($sql);
+        $search = '%' . $searchTerm . '%';
+        $stmt->bindParam(':search', $search, PDO::PARAM_STR);
+        $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+        $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
+
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function countProduitsBySearch($searchTerm) {
+        $sql = "SELECT COUNT(*) AS total FROM produits 
+                WHERE titre LIKE :search OR description LIKE :search  OR descriptif LIKE :search";
+
+        $stmt = $this->db->prepare($sql);
+        $search = '%' . $searchTerm . '%';
+        $stmt->bindParam(':search', $search, PDO::PARAM_STR);
+
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result['total'] ?? 0;
+    }
+    public function getProduitsByCategoryAndPagination($category, $limit, $offset) {
+        $sql = "SELECT * FROM produits";
+        
+        // Filtrer par catégorie si nécessaire
+        if ($category === 'sans_chocolat') {
+            $sql .= " WHERE categorie = :category";
+        }else if ($category === 'box') {
+            $sql .= " WHERE categorie = :category";
+        }
+        
+        $sql .= " LIMIT :limit OFFSET :offset";
+        $stmt = $this->db->prepare($sql);
+    
+        if ($category !== 'all') {
+            $stmt->bindValue(':category', $category, PDO::PARAM_STR);
+        }
+        $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
+        $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+    
+        $stmt->execute();
+    
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    
+    public function countProduitsByCategory($category) {
+        $sql = "SELECT COUNT(*) as total FROM produits";
+    
+        // Filtrer par catégorie si nécessaire
+        if ($category !== 'all') {
+            $sql .= " WHERE categorie = :category";
+        }
+    
+        $stmt = $this->db->prepare($sql);
+    
+        if ($category !== 'all') {
+            $stmt->bindValue(':category', $category, PDO::PARAM_STR);
+        }
+    
+        $stmt->execute();
+    
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result['total'] ?? 0;
     }
 }
     

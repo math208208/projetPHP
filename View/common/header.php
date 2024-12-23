@@ -41,6 +41,10 @@
             <div class="nav-right">
 
 
+
+
+
+
                 <a href="index.php?action=afficherCommande" class="profil">
                     <img src="assets/profil.png" alt="Administration"></a>
 
@@ -50,12 +54,18 @@
                 <a href="">Contact</a>
 
 
-                <label for="search-toggle" class="search">
-                    <div class="search-icon">
-                        <img src="assets/search.png" alt="search" style="width: 28px; height: 28px;">
-                    </div>
-                </label>
 
+
+                <form method="post" action="index.php?action=searchCookie" class="search-form">
+                    <input type="hidden" name="action" value="searchProduits">
+                    <div class="search-container">
+                        <input type="text" name="search" placeholder="Rechercher un produit"
+                            value="<?= htmlspecialchars($searchTerm ?? '') ?>" class="search-input">
+                        <button type="submit" class="search-button">
+                            <img src="assets/search.png" alt="search" class="search-icon">
+                        </button>
+                    </div>
+                </form>
 
                 <input type="checkbox" id="search-toggle" class="search-toggle">
 
