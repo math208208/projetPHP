@@ -16,7 +16,8 @@
 
 <body>
     <main>
-        <h1>Vos commandes :</h1>
+        <p> Bonjour <?php echo($_SESSION['client']['nom']." ".$_SESSION['client']['prenom']);?></p>
+        <h1>Voici vos commandes :</h1>
 
 
         <div class="commande">

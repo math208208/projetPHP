@@ -53,7 +53,6 @@
                 <a href="index.php?action=adminClient" class="admin">
                     <img src="assets/lock.png" alt="Administration"></a>
                 <a href="#nos-cookies">Nos cookies</a>
-                <a href="">Contact</a>
 
 
 

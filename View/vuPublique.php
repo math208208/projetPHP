@@ -78,6 +78,7 @@
 
                         <form method="post" action="index.php?action=addToCart#nos-cookies">
                             <input type="hidden" name="product" value='<?= json_encode($produit) ?>'>
+
                             <button type="submit" class="panier">Ajouter au panier</button>
                         </form>
                     </div>

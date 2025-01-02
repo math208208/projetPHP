@@ -52,7 +52,14 @@ class ControllerClient {
 
     function decoClient(){
         unset($_SESSION['client']);
-        header(header: 'Location: index.php?action=afficherProduits');
+        echo "<div style='text-align: center; margin-top: 50px;'>
+        <p style='font-size: 20px;'>Vous allez être déconnecté !</p>
+        </div>";
+            echo "<script>
+        setTimeout(function() {
+            window.location.href = 'index.php?action=afficherProduits';
+        }, 4000); // Redirige après 5 secondes
+        </script>";
 
     }
 
