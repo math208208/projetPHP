@@ -50,12 +50,8 @@
         case 'addToCart':
             $panierController->addToCart();
             break;
-        case 'viewCart':
-            if(empty($_SESSION['client'])){
-                $controllerClient->afficherConnexion();
-            }else{
-                $panierController->viewCart();
-            }
+        case 'viewCart':        
+            $panierController->viewCart();   
             break;     
         case 'updateCart':
             $panierController->updateCart();
@@ -66,7 +62,12 @@
 
         //Confirmation du panier
         case 'confirmerPanier': 
-            $panierController->confirmerPanier();
+            $_SESSION['acceCommande']=false;
+            if(empty($_SESSION['client'])){
+                $controllerClient->afficherConnexion();
+            }else{
+                $panierController->confirmerPanier();
+            }
             break;
         case 'finaliserCommande':
             $panierController->finaliserCommande();
@@ -139,6 +140,7 @@
 
         //Commandes Client
         case 'afficherCommande':
+            $_SESSION['acceCommande']=true;
             if(empty($_SESSION['client'])){
                 $controllerClient->afficherConnexion();
             }else{

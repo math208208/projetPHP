@@ -38,7 +38,14 @@ class ControllerClient {
             
 
         }
-        header(header: 'Location: index.php?action=afficherProduits');
+        if($_SESSION['acceCommande']===true){
+            $_SESSION['acceCommande']=false;
+            header(header: 'Location: index.php?action=afficherCommande');
+        }else{
+            header(header: 'Location: index.php?action=viewCart');
+        }
+        
+
 
         
     }

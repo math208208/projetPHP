@@ -16,7 +16,9 @@
 
 <body>
     <main>
-        <h1>Votre Panier</h1>
+        <h1>Voici votre panier
+            <?php if(!empty($_SESSION['client'])){ echo($_SESSION['client']['prenom']); }?> :
+        </h1>
 
 
         <div class="produits">
@@ -69,17 +71,18 @@
 
             <?php else: ?>
 
-            <p class="empty-cart">Votre panier est vide.</p>
+            <p class="empty-cart">Votre panier est
+                vide. </p>
             <?php endif; ?>
         </div>
     </main>
 
     <footer>
-    <p>&copy <?= date('Y') ?> M&A Cookies. Tous droits réservés.</p>
-    <h4>M&A Cookies</h4>
-    <a href="index.php?action=adminClient" class="admin">
-        <img src="assets/lock.png" alt="Administration"></a>
-</footer>
+        <p>&copy <?= date('Y') ?> M&A Cookies. Tous droits réservés.</p>
+        <h4>M&A Cookies</h4>
+        <a href="index.php?action=adminClient" class="admin">
+            <img src="assets/lock.png" alt="Administration"></a>
+    </footer>
 
 </body>
 
