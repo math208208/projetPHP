@@ -50,6 +50,12 @@ class ControllerClient {
         
     }
 
+    function decoClient(){
+        unset($_SESSION['client']);
+        header(header: 'Location: index.php?action=afficherProduits');
+
+    }
+
     
 }   
             

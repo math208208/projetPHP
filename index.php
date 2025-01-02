@@ -147,6 +147,9 @@
                 $controllerCommandeClient->afficherCommande();
             }
             break;
+        case 'decoClient':
+            $controllerClient->decoClient();
+            break;
             
         default:
             echo "Action non reconnue.";
