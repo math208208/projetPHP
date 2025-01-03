@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/menuAdmin.css">
-    <link rel="stylesheet" href="css/vuAdminClient.css">
+    <link rel="stylesheet" href="css/vuAdmin.css">
     <link rel="stylesheet" href="css/popup.css">
 
     <link rel="icon" type="image/png" href="assets/favicon.png">
@@ -67,7 +67,7 @@
     <form method="post" class="search" action="index.php?action=findClient">
         <input type="text" name="search" placeholder="Rechercher un client..."
             value="<?= htmlspecialchars($_POST['search'] ?? '') ?>">
-        <button class="search-button" type="submit">Rechercher</button>
+        <button type="submit">Rechercher</button>
     </form>
 
     <!-- Table des clients -->

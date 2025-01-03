@@ -3,7 +3,6 @@ h1 {
   color: #504031;
   font-family: "Montserrat", sans-serif;
   font-size: 32px;
-
   margin-top: 40px;
   margin-bottom: 15px;
 }
@@ -11,7 +10,6 @@ h1 {
 h2 {
   text-align: center;
   color: #504031;
-
   font-family: "Montserrat", sans-serif;
   font-size: 24px;
   margin-bottom: 30px;
@@ -20,11 +18,11 @@ h2 {
 
 form[action*="findProduit"],
 form[action*="findCommande"],
-form[action*="findFournisseur"] {
+form[action*="findFournisseur"],
+form[action*="findClient"] {
   display: flex;
   gap: 10px;
   align-items: center;
-
   max-width: 500px;
   padding: 30px;
   margin-left: 772px;
@@ -33,24 +31,24 @@ form[action*="findFournisseur"] {
 
 form[action*="findProduit"] input,
 form[action*="findCommande"] input,
-form[action*="findFournisseur"] input {
+form[action*="findFournisseur"] input,
+form[action*="findClient"] input {
   width: 300px;
   padding: 15px;
   margin-bottom: 0;
-
   border: 1px solid #ddd;
   border-radius: 15px;
 }
 
 form[action*="findProduit"] button,
 form[action*="findCommande"] button,
-form[action*="findFournisseur"] button {
+form[action*="findFournisseur"] button,
+form[action*="findClient"] button {
   padding: 15px 25px;
   background-color: #b08968;
   color: white;
   border: none;
   border-radius: 15px;
-
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -59,7 +57,8 @@ form[action*="findFournisseur"] button {
 
 form[action*="findProduit"] button:hover,
 form[action*="findCommande"] button:hover,
-form[action*="findFournisseur"] button:hover {
+form[action*="findFournisseur"] button:hover,
+form[action*="findClient"] button:hover {
   background-color: #9c7a5a;
 }
 
@@ -68,7 +67,6 @@ table {
   border-collapse: separate;
   border-spacing: 0;
   margin-top: 30px;
-
   background-color: #ffffff;
   border-radius: 25px;
   overflow: hidden;
@@ -90,26 +88,49 @@ td {
 th {
   font-weight: bold;
 }
+
 tr:hover {
   background-color: #f1e6d9;
 }
 
+form[action*="deleteProduit"] button,
+form[action*="deleteCommande"] button,
+form[action*="deleteFournisseur"] button,
+form[action*="deleteClient"] button {
+  padding: 10px 15px;
+  background-color: #b08968;
+  color: white;
+  border: none;
+  border-radius: 15px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+form[action*="deleteProduit"] button:hover,
+form[action*="deleteCommande"] button:hover,
+form[action*="deleteFournisseur"] button:hover,
+form[action*="deleteClient"] button:hover {
+  background-color: #9c7a5a;
+}
+
 form[action*="addProduit"],
-form[action*="addFournisseur"] {
+form[action*="addFournisseur"],
+form[action*="addClient"] {
   background-color: #ffffff;
   border-radius: 25px;
   max-width: 500px;
   margin: 0 auto;
   padding: 30px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 form[action*="addProduit"] input,
-form[action*="addFournisseur"] input {
+form[action*="addFournisseur"] input,
+form[action*="addClient"] input {
   width: 100%;
   padding: 15px;
   margin-bottom: 20px;
   border: 1px solid #ddd;
-
   border-radius: 15px;
   font-size: 16px;
   color: #504031;
@@ -117,58 +138,26 @@ form[action*="addFournisseur"] input {
 }
 
 form[action*="addProduit"] button,
-form[action*="addFournisseur"] button {
-  padding: 15px 3px;
+form[action*="addFournisseur"] button,
+form[action*="addClient"] button {
+  padding: 15px 30px;
   background-color: #b08968;
   color: white;
-
   border: none;
   border-radius: 15px;
   font-weight: 600;
-
   transition: all 0.3s ease;
-  width: 75%;
+  width: 100%;
   font-family: "Montserrat", sans-serif;
-  margin-left: 35px;
 }
 
 form[action*="addProduit"] button:hover,
-form[action*="addFournisseur"] button:hover {
-  background-color: #9c7a5a;
-}
-
-form[action*="deleteProduit"] button,
-form[action*="deleteCommande"] button,
-form[action*="deleteFournisseur"] button {
-  padding: 10px 15px;
-  background-color: #b08968;
-  color: white;
-  border: none;
-
-  border-radius: 15px;
-  font-weight: 600;
-
-  transition: all 0.3s ease;
-}
-
-form[action*="deleteProduit"] button:hover,
-form[action*="deleteCommande"] button:hover,
-form[action*="deleteFournisseur"] button:hover {
+form[action*="addFournisseur"] button:hover,
+form[action*="addClient"] button:hover {
   background-color: #9c7a5a;
 }
 
 @media (max-width: 768px) {
-  nav {
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  nav ul {
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-  }
-
   form,
   table {
     width: 95%;
@@ -181,18 +170,20 @@ form[action*="deleteFournisseur"] button:hover {
     font-size: 14px;
   }
 
-  form[action*="addProduit"] button {
+  form[action*="addProduit"] button,
+  form[action*="addFournisseur"] button,
+  form[action*="addClient"] button {
     padding: 12px 15px;
   }
 
   form[action*="findProduit"],
-  form[action*="findCommande"] {
+  form[action*="findCommande"],
+  form[action*="findClient"] {
     margin: 0 auto;
     padding: 20px;
   }
 }
 
-/* compta */
 .stats-container {
   width: 85%;
   margin: 30px auto;
@@ -205,7 +196,6 @@ form[action*="deleteFournisseur"] button:hover {
   background-color: #ffffff;
   border-radius: 25px;
   padding: 25px;
-
   transition: transform 0.3s ease;
 }
 
@@ -242,4 +232,71 @@ form[action*="deleteFournisseur"] button:hover {
   .stat-card p {
     font-size: 16px;
   }
+}
+
+.adminmessage {
+  background-color: #f8f4f0;
+  padding: 30px;
+  border-radius: 25px;
+  margin-top: 30px;
+  display: none;
+}
+
+.adminmessage .alerte {
+  font-size: 24px;
+  font-weight: bold;
+  color: #b08968;
+}
+
+.adminmessage .infoMessage {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #504031;
+}
+
+.containerRupture {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.prodRupture {
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.prodRupture img {
+  width: 50px;
+  height: 50px;
+}
+
+button.close-button {
+  background-color: #b08968;
+  color: white;
+  border: none;
+  border-radius: 15px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button.close-button:hover {
+  background-color: #9c7a5a;
+}
+
+.fournisseurPop {
+  background-color: #b08968;
+  color: white;
+  border: none;
+  border-radius: 15px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+}
+
+.fournisseurPop:hover {
+  background-color: #9c7a5a;
 }
