@@ -239,7 +239,6 @@ form[action*="addClient"] button:hover {
   padding: 30px;
   border-radius: 25px;
   margin-top: 30px;
-  display: none;
 }
 
 .adminmessage .alerte {
