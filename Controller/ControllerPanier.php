@@ -188,49 +188,112 @@ class ControllerPanier {
             $cart= $_SESSION['panier'];
             
             
-        $message = "
-                <html lang='fr'>
-                <head>
-                    <title>Panier - M&A Cookies</title>
-                    <meta charset='UTF-8'>
-                    <style>
-                        body { font-family: Arial, sans-serif; }
-                        .produits { margin-top: 20px; }
-                        .element { border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; }
-                        .empty-cart { color: red; }
-                    </style>
-                </head>
-                <body>
-                    <main>
-                        <h1>Votre Panier</h1>
-                        <div class='produits'>";
+            $message = "
+            <html lang='fr'>
+            <head>
+                <meta charset='UTF-8'>
+                <style>
+                
+                    body {
+                        font-family: Montserrat;
+                        max-width: 600px;
+                        margin: 0 auto;
+                        padding: 20px;
+                    }
+            
+                    h1 {
+                        color: #504031;
+                        text-align: center;
+                        margin-bottom: 30px;
+                        font-size: 24px;
+                    }
 
+                    h4{                    
+                        color:  #504031;
+                        text-align: start;
+                        font-size: 17px;
+                        margin-bottom: 14px;
+
+                    }
+            
+                    .produit {
+
+                        margin-bottom: 25px;
+                        padding: 15px;
+                        background-color: #f8f4f0;
+                        border-radius: 10px;
+                    }
+            
+                    .titre {
+
+                        color: #b08968;
+                        font-size: 18px;
+                        font-weight:bold;
+                        margin-bottom: 10px;
+                    }
+            
+                    .detail {
+                        color: #666;
+                        margin: 5px 0;
+                    }
+            
+                    .prix {
+
+                        color: #504031;
+                        font-weight: bold;
+                        margin-top: 10px;
+                    }
+            
+                    .total {
+
+                        margin-top: 30px;
+                        font-size: 18px;
+                        color: #504031;
+                    }
+            
+                    .total-ttc {
+
+                        color: #b08968;
+                        font-weight: bold;
+                        font-size: 20px;
+                    }
+
+                </style>
+            </head>
+            <body>
+            
+                <h1>Récapitulatif de votre commande</h1>
+                <h4>Nous vous remercions pour vos achats sur M&A Cookies.
+                Votre commande est en cours de préparation.</h4>";
+            
                 foreach ($cart as $produit) {
+
                     $message .= "
-                        <div class='element'>
-                            <div class='infos-produits'>
-                                <h3>" . htmlspecialchars($produit['titre']) . "</h3>
-                                <p>" . htmlspecialchars($produit['description']) . "</p>
-                                <h4>Prix: " . htmlspecialchars($produit['prix_public']) . " €</h4>
-                            </div>
-                            <p>Quantité: " . htmlspecialchars($produit['quantity']) . "</p>
-                        </div>";
+                    <div class='produit'>
+
+                        <div class='titre'>" . htmlspecialchars($produit['titre']) . "</div>
+                        <div class='detail'>" . htmlspecialchars($produit['description']) . "</div>
+                        <div class='detail'>Quantité : " . htmlspecialchars($produit['quantity']) . "</div>
+                        <div class='prix'>Prix : " . htmlspecialchars($produit['prix_public']) . " €</div>
+
+                    </div>";
                 }
-
+            
                 $message .= "
-                        <p>Total HT : " . htmlspecialchars($totalHT) . " €</p>
-                        <p>Montant total de la commande (TTC): " . htmlspecialchars($totalTTC) . " €</p>";
 
-            $message .= "
-                        </div>
-                    </main>
-                </body>
-                </html>";
+                <div class='total'>
+                    <div>Total HT : " . htmlspecialchars($totalHT) . " €</div>
+                    <div class='total-ttc'>TOTAL TTC : " . htmlspecialchars($totalTTC) . " €</div>
+                </div>
+
+            </body>
+            </html>";
 
 
             // Appel au modèle pour envoyer l'email
             $success = $cartModel->sendClient($message,$email);
         }
+
     }
 
 

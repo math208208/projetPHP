@@ -60,7 +60,7 @@
 
             <?php endforeach; ?>
 
-            <p>Total HT : <?= htmlspecialchars($prixTotalHT) ?> €</p>
+            <p class="totalHT">Total HT : <?= htmlspecialchars($prixTotalHT) ?> €</p>
             <p class="total">Montant à payer (TTC): <?= htmlspecialchars($prixTotalTTC) ?> €</p>
 
             <div class="cart-confirmation">

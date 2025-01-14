@@ -12,6 +12,14 @@ h1 {
   margin-bottom: 40px;
 }
 
+.bjr {
+  font-size: 30px;
+  font-weight: bold;
+  color: #504031;
+  margin-bottom: 18px;
+  text-align: center;
+}
+
 .commande {
   display: flex;
   flex-direction: column;

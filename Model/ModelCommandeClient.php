@@ -28,7 +28,7 @@ class ModelCommandeClient{
     }
 
     public function getCommandeById($idClient){
-        $sql= "SELECT * FROM facturation WHERE client_id=:id_client";
+        $sql= "SELECT * FROM facturation WHERE client_id=:id_client ORDER BY date_creation DESC";
 
         $stmt = $this->db->prepare($sql);
         $stmt->bindParam(':id_client', $idClient);

@@ -130,6 +130,12 @@ button {
   color: #b08968;
 }
 
+.totalHT {
+  font-weight: bold;
+  font-size: 21px;
+  color: #504031;
+}
+
 /* effet responsive : un article par ligne */
 @media (max-width: 768px) {
   .element {
