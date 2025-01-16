@@ -51,9 +51,11 @@
                 <a href="index.php?action=afficherCommande" class="profil">
                     <img src="assets/profil.png" alt="Administration"></a>
 
-                <a href="index.php?action=adminClient" class="admin">
-                    <img src="assets/lock.png" alt="Administration"></a>
+                <a href="index.php?action=adminClient"> Admin</a>
 
+
+
+                    
                 <a href="#nos-cookies">Nos cookies</a>
 
 
