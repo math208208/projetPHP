@@ -132,7 +132,6 @@
             $adminControllerCompta->viewAdminCompta();
             break;
 
-
         //Connexion Client
         case 'clientConnect':
             $controllerClient->connexionClient();

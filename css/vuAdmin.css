@@ -298,3 +298,57 @@ button.close-button:hover {
 .fournisseurPop:hover {
   background-color: #9c7a5a;
 }
+
+.date-selection {
+  margin-bottom: 30px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.date-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.date-inputs {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.date-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.date-group label {
+  color: #504031;
+  font-weight: bold;
+}
+
+.date-group input[type="date"] {
+  padding: 8px;
+  border: 1px solid #b08968;
+  border-radius: 5px;
+}
+
+.filter-btn {
+  background-color: #b08968;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  align-self: center;
+  transition: background-color 0.3s ease;
+}
+
+.filter-btn:hover {
+  background-color: #8c5832;
+}
