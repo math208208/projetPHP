@@ -1,0 +1,41 @@
+footer {
+  background-color: #504031;
+  color: #fff9ef;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+}
+
+footer p {
+  font-size: 16px;
+}
+
+footer h4 {
+  font-family: "Berkshire Swash", cursive;
+  font-size: 29px;
+  margin-right: 280px;
+}
+
+footer h3 {
+  color: #fff9ef;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+footer h3:hover {
+  color: #744a31;
+}
+
+.admin {
+  align-items: center;
+  text-decoration: none;
+
+  padding: 5px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.admin:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}

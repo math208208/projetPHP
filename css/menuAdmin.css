@@ -1,0 +1,63 @@
+/* Styles de base pour le menu */
+#menuAdmin {
+  position: fixed;
+  top: 0;
+  left: -170px; /* Une partie du menu dépasse */
+  width: 200px;
+  height: 45%;
+  background-color: #b08968;
+  color: #fff;
+  overflow-x: hidden;
+  transition: left 0.3s ease; /* Animation fluide */
+  border-right: 2px solid #b08968; /* Ligne visible */
+  margin-top: 10%;
+  border-radius: 15px;
+}
+
+/* Bout visible avec texte en colonne */
+.menu-label {
+  position: absolute;
+  top: 50%;
+  right: 0px; /* Bout qui dépasse */
+  width: 30px;
+  background-color: #b08968;
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+  text-align: center;
+  padding: 5px 0;
+  border-left: none;
+  cursor: pointer;
+  transform: translateY(-50%); /* Centrage vertical */
+}
+
+/* Lorsque l'utilisateur passe la souris */
+#menuAdmin:hover {
+  left: 0; /* Le menu glisse complètement à gauche */
+}
+
+/* Style pour la liste */
+#menuAdmin ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Style pour chaque élément de menu */
+#menuAdmin ul li {
+  padding: 15px;
+  margin-top: 32px;
+}
+
+#menuAdmin ul li:hover {
+  background-color: #575757; /* Effet sur le survol des éléments */
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none; /* Supprime le soulignement */
+  color: white;
+  display: block; /* Rend le lien cliquable sur toute la largeur */
+  font-size: 18px;
+  font-weight: bold;
+}

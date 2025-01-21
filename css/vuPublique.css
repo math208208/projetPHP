@@ -1,0 +1,372 @@
+* {
+  background: none;
+  color: inherit;
+}
+
+.cookie-card {
+  transition: all 0.3s ease;
+}
+
+.cookie-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(176, 137, 104, 0.2);
+  border-color: #b08968;
+}
+
+.cookie-card img {
+  transition: transform 0.3s ease;
+}
+
+.cookie-card:hover img {
+  transform: scale(1.05);
+}
+
+.cookie-card:hover h4 {
+  color: #b08968;
+}
+
+.cookie-card button {
+  transition: background-color 0.3s ease;
+}
+
+.cookie-card button:hover {
+  background-color: #8c5832;
+}
+.title {
+  text-align: left;
+}
+
+.subtitle {
+  text-align: left;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif; /* Pour TOUS les éléments */
+}
+
+body {
+  background-color: #f7f3f0;
+  overflow-x: hidden;
+  position: relative;
+  padding-top: 70px;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff9ef;
+  z-index: -1; /* on s'assure que il ne passe pas au dessus des autres éléments */
+}
+
+.title {
+  font-size: 57px;
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+.subtitle {
+  font-size: 24px;
+  margin-top: 20px;
+  opacity: 0;
+  color: #fff9ef;
+  font-weight: bold;
+  animation: effetsousTitre 2s ease forwards 1s;
+}
+
+.titreCentral {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+
+  background-image: url("../assets/background2.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: scroll; /* quand on scroll, l'image ne reste pas fixe et bouge également*/
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: white;
+  text-align: center;
+  z-index: 1; /* passe au dessus de l'image */
+}
+
+/* Animation pour faire apparaître le sous-titre de bas vers le haut */
+@keyframes effetsousTitre {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.content {
+  padding: 60px 20px;
+  background-color: #f0f0f0;
+}
+
+/*NOS COOKIES*/
+
+.cookies-wrapper {
+  display: grid;
+  grid-template-columns: repeat(
+    4,
+    1fr
+  ); /* que 4 cartes de cookies , sur une ligne sinon on va a la ligne */
+  justify-items: center;
+  margin-top: 40px;
+  margin-left: -2px;
+}
+
+/* la carte cookie avec photo + titre + description */
+
+.cookie-card {
+  background-color: #fff;
+  padding: 15px 25px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 350px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  margin-bottom: 30px;
+}
+
+@media (max-width: 768px) {
+  .cookies-wrapper {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .cookie-card {
+    width: 90%;
+  }
+}
+
+.cookie-img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.cookie-card h3 {
+  font-size: 1.2rem;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.cookie-card p {
+  font-size: 14px;
+  color: #555;
+}
+
+.cookie-card h4 {
+  color: #504031;
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 11px;
+}
+
+.button {
+  font-size: 17px;
+  color: #fff9ef;
+  font-family: "Montserrat", sans-serif;
+  padding: 13px 7px;
+  font-weight: bold;
+}
+
+.cookie-card button {
+  border: none;
+  border-radius: 18px;
+  background-color: #b08968;
+  color: #fff9ef;
+  margin-left: 7px;
+  padding: 15px 30px;
+  font-size: 15px;
+  width: 100%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: bold;
+}
+
+.cookie-card button:hover {
+  background-color: #8c5832;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(140, 88, 50, 0.2);
+}
+
+#nos-cookies {
+  padding-top: 80px;
+  padding-bottom: 60px;
+}
+
+.cookies-container {
+  text-align: center;
+  padding: 0 20px;
+}
+
+/* mise en place du responsive a ameliorer*/
+@media (max-width: 768px) {
+  .titreCentral h1 {
+    font-size: 40px;
+  }
+
+  .titreCentral h2 {
+    font-size: 18px;
+  }
+
+  .cookies-wrapper {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .cookie-card {
+    width: 90%;
+  }
+}
+
+.cookies-container h2 {
+  font-size: 43px;
+  margin-bottom: 20px;
+  font-family: "Berkshire Swash", cursive;
+}
+
+.cookies-container p {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 40px;
+}
+
+/*partie banniere nouveaute */
+
+.banNew {
+  position: relative;
+  width: 90%;
+  height: 500px;
+  margin: 50px auto;
+  background-color: #504031;
+  border-radius: 30px;
+}
+
+.contenuNew {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between; /* permet un ecart egal sur la longueur pour tous les éléments*/
+  align-items: center;
+  height: 100%;
+  padding: 0 80px;
+}
+
+.banText {
+  color: #fff9ef;
+}
+
+.banImg img {
+  max-width: 400px;
+  border-radius: 20px;
+  transition: transform 0.5s ease;
+}
+
+.banImg img:hover {
+  transform: translateY(
+    -10px
+  ); /* effet de montant descendant quand on survole*/
+}
+
+/*bulle "à venir" en haut de la box */
+.showNew {
+  display: inline-block;
+  background-color: #b08968;
+  padding: 10px 25px;
+  border-radius: 25px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  font-size: 17px;
+}
+
+.banText h1 {
+  font-family: "Berkshire Swash", cursive;
+  font-size: 41px;
+  margin-bottom: 30px;
+}
+
+.banText p {
+  font-size: 24px;
+  margin-bottom: 40px;
+}
+
+.contenuNew p {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* tri catégorie*/
+
+.category-filter select {
+  padding: 12px 45px 12px 20px;
+  font-size: 16px;
+  border: 2px solid #b08968;
+  border-radius: 25px;
+  background-color: white;
+  color: #504031;
+  min-width: 200px;
+  transition: all 0.3s ease;
+}
+
+.category-filter select option {
+  background-color: white;
+  color: #504031;
+  padding: 12px;
+  font-size: 16px;
+}
+
+.category-filter select option:hover {
+  background-color: #fff9ef;
+}
+
+/* pagination bas de page */
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 40px;
+}
+
+.pagination a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #fff;
+  color: #504031;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: 2px solid #b08968;
+}
+
+.pagination a:hover {
+  background-color: #b08968;
+  color: #fff;
+}
+
+/* colore la page active et mets la deuxieme en blanc */
+.pagination a.active {
+  background-color: #b08968;
+  color: #fff;
+}
